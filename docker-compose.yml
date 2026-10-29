@@ -1,0 +1,21 @@
+services:
+  postgres:
+    image: postgres:16
+    container_name: qtkd-postgres
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: ${QTKD_POSTGRES_DB:-qtkd}
+      POSTGRES_USER: ${QTKD_POSTGRES_USER:-postgres}
+      POSTGRES_PASSWORD: ${QTKD_POSTGRES_PASSWORD:?Set QTKD_POSTGRES_PASSWORD in .env}
+    ports:
+      - "127.0.0.1:${QTKD_POSTGRES_PORT:-5435}:5432"
+    volumes:
+      - qtkd-postgres-data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U \"$${POSTGRES_USER}\" -d \"$${POSTGRES_DB}\""]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+
+volumes:
+  qtkd-postgres-data:
