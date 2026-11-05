@@ -12,6 +12,12 @@ public sealed class Contract
 
     public DateOnly EndDate { get; set; }
 
+    public decimal? ContractValue { get; set; }
+
+    public string? PaymentTerms { get; set; }
+
+    public string? ServiceTerms { get; set; }
+
     public required string Status { get; set; }
 
     public Customer? Customer { get; set; }

@@ -25,12 +25,28 @@ public sealed class CustomersControllerTests
     }
 
     private sealed class StubCustomerReadService(
-        IReadOnlyList<CustomerReadModel> customers) : ICustomerReadService
+        IReadOnlyList<CustomerReadModel> customers) : ICustomerService
     {
         public Task<IReadOnlyList<CustomerReadModel>> GetCustomersAsync(
             CancellationToken cancellationToken)
         {
             return Task.FromResult(customers);
         }
+
+        public Task<CustomerResponse?> GetCustomerByIdAsync(
+            int id,
+            CancellationToken cancellationToken) =>
+            throw new NotImplementedException();
+
+        public Task<ApiOperationResult<CustomerResponse>> CreateCustomerAsync(
+            CreateCustomerRequest request,
+            CancellationToken cancellationToken) =>
+            throw new NotImplementedException();
+
+        public Task<ApiOperationResult<CustomerResponse>> UpdateCustomerAsync(
+            int id,
+            UpdateCustomerRequest request,
+            CancellationToken cancellationToken) =>
+            throw new NotImplementedException();
     }
 }

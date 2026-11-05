@@ -3,22 +3,6 @@ using QTKD.Api.Infrastructure;
 
 namespace QTKD.Api.Application;
 
-public sealed class CustomerReadService(QtkdDbContext dbContext) : ICustomerReadService
-{
-    public async Task<IReadOnlyList<CustomerReadModel>> GetCustomersAsync(
-        CancellationToken cancellationToken)
-    {
-        return await dbContext.Customers
-            .AsNoTracking()
-            .OrderBy(customer => customer.Id)
-            .Select(customer => new CustomerReadModel(
-                customer.Id,
-                customer.Name,
-                customer.Status))
-            .ToListAsync(cancellationToken);
-    }
-}
-
 public sealed class ContractReadService(QtkdDbContext dbContext) : IContractReadService
 {
     public Task<ContractReadModel?> GetContractByIdAsync(
@@ -35,6 +19,9 @@ public sealed class ContractReadService(QtkdDbContext dbContext) : IContractRead
                 contract.Customer!.Name,
                 contract.StartDate,
                 contract.EndDate,
+                contract.ContractValue,
+                contract.PaymentTerms,
+                contract.ServiceTerms,
                 contract.Status))
             .SingleOrDefaultAsync(cancellationToken);
     }

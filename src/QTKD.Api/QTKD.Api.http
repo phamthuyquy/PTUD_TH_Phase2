@@ -1,9 +1,133 @@
 @HostAddress = http://localhost:5069
+@customerId = {{createCustomer.response.body.$.id}}
+@contractId = {{createContract.response.body.$.id}}
+@priceListId = {{createPriceList.response.body.$.id}}
 
+### List customers
 GET {{HostAddress}}/api/customers
 Accept: application/json
 
-###
+### Get customer details
+GET {{HostAddress}}/api/customers/{{customerId}}
+Accept: application/json
 
-GET {{HostAddress}}/api/contracts/1
+### Create customer
+# @name createCustomer
+POST {{HostAddress}}/api/customers
+Content-Type: application/json
+
+{
+  "code": "CUS-DEMO-001",
+  "name": "Công ty Logistics Demo",
+  "taxCode": "0319999001",
+  "address": "TP. Hồ Chí Minh",
+  "representativeName": "Nguyễn An",
+  "contactInfo": "demo@example.test",
+  "status": "Active"
+}
+
+### Update customer
+PUT {{HostAddress}}/api/customers/{{customerId}}
+Content-Type: application/json
+
+{
+  "code": "CUS-DEMO-001",
+  "name": "Công ty Logistics Demo - cập nhật",
+  "taxCode": "0319999001",
+  "address": "TP. Hồ Chí Minh",
+  "representativeName": "Nguyễn An",
+  "contactInfo": "demo@example.test",
+  "status": "Active"
+}
+
+### Create a Draft contract with missing required content
+# @name createContract
+POST {{HostAddress}}/api/contracts
+Content-Type: application/json
+
+{
+  "contractNo": "HD-DEMO-001",
+  "customerId": {{customerId}},
+  "startDate": "2026-10-01",
+  "endDate": "2027-09-30",
+  "contractValue": 10000000,
+  "paymentTerms": "Thanh toán theo tháng",
+  "serviceTerms": ""
+}
+
+### Submit without required content (expect 400 and no state change)
+POST {{HostAddress}}/api/contracts/{{contractId}}/submit
+Idempotency-Key: week06-demo-submit
+
+### Add required content before a successful submission
+PUT {{HostAddress}}/api/contracts/{{contractId}}
+Content-Type: application/json
+
+{
+  "contractNo": "HD-2026-018",
+  "customerId": {{customerId}},
+  "startDate": "2026-10-01",
+  "endDate": "2027-09-30",
+  "contractValue": 10000000,
+  "paymentTerms": "Thanh toán theo tháng",
+  "serviceTerms": "Dịch vụ khai thác cảng theo thỏa thuận."
+}
+
+### Submit valid contract (expect 200 and PendingApproval)
+POST {{HostAddress}}/api/contracts/{{contractId}}/submit
+Idempotency-Key: week06-demo-submit
+
+### Replay same submission (expect same approvalId and isReplay=true)
+POST {{HostAddress}}/api/contracts/{{contractId}}/submit
+Idempotency-Key: week06-demo-submit
+
+### Try editing after submit (expect 409)
+PUT {{HostAddress}}/api/contracts/{{contractId}}
+Content-Type: application/json
+
+{
+  "contractNo": "HD-2026-018",
+  "customerId": {{customerId}},
+  "startDate": "2026-10-01",
+  "endDate": "2027-09-30",
+  "contractValue": 10000000,
+  "paymentTerms": "Thanh toán theo tháng",
+  "serviceTerms": "Updated after submit."
+}
+
+### List price lists
+GET {{HostAddress}}/api/pricelists
+Accept: application/json
+
+### Create price list for a contract
+# @name createPriceList
+POST {{HostAddress}}/api/pricelists
+Content-Type: application/json
+
+{
+  "name": "Bảng giá demo 2026",
+  "contractId": {{contractId}},
+  "effectiveDate": "2026-01-01",
+  "endDate": "2026-12-31"
+}
+
+### Get price list
+GET {{HostAddress}}/api/pricelists/{{priceListId}}
+Accept: application/json
+
+### Add price item
+POST {{HostAddress}}/api/pricelists/{{priceListId}}/items
+Content-Type: application/json
+
+{
+  "serviceCode": "PORT-DEMO",
+  "unitPrice": 1500000
+}
+
+### List price items
+GET {{HostAddress}}/api/pricelists/{{priceListId}}/items
+Accept: application/json
+
+### Get a price item
+GET {{HostAddress}}/api/pricelists/{{priceListId}}/items/PORT-DEMO
 Accept: application/json

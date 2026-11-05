@@ -35,11 +35,23 @@ namespace QTKD.Api.Migrations
                         .HasMaxLength(50)
                         .HasColumnType("character varying(50)");
 
+                    b.Property<decimal?>("ContractValue")
+                        .HasPrecision(18, 2)
+                        .HasColumnType("numeric(18,2)");
+
                     b.Property<int>("CustomerId")
                         .HasColumnType("integer");
 
                     b.Property<DateOnly>("EndDate")
                         .HasColumnType("date");
+
+                    b.Property<string>("PaymentTerms")
+                        .HasMaxLength(1000)
+                        .HasColumnType("character varying(1000)");
+
+                    b.Property<string>("ServiceTerms")
+                        .HasMaxLength(4000)
+                        .HasColumnType("character varying(4000)");
 
                     b.Property<DateOnly>("StartDate")
                         .HasColumnType("date");
@@ -63,11 +75,47 @@ namespace QTKD.Api.Migrations
                         {
                             Id = 1,
                             ContractNo = "HD-2026-018",
+                            ContractValue = 10000000m,
                             CustomerId = 1,
                             EndDate = new DateOnly(2027, 9, 30),
+                            PaymentTerms = "Thanh toán theo tháng",
+                            ServiceTerms = "Dịch vụ khai thác cảng theo thỏa thuận.",
                             StartDate = new DateOnly(2026, 10, 1),
                             Status = "Draft"
                         });
+                });
+
+            modelBuilder.Entity("QTKD.Api.Domain.ContractSubmission", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
+
+                    b.Property<Guid>("ApprovalId")
+                        .HasColumnType("uuid");
+
+                    b.Property<int>("ContractId")
+                        .HasColumnType("integer");
+
+                    b.Property<string>("IdempotencyKey")
+                        .HasMaxLength(100)
+                        .HasColumnType("character varying(100)");
+
+                    b.Property<DateTimeOffset>("SubmittedAt")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("ContractId")
+                        .IsUnique();
+
+                    b.HasIndex("IdempotencyKey")
+                        .IsUnique()
+                        .HasFilter("\"IdempotencyKey\" IS NOT NULL");
+
+                    b.ToTable("ContractSubmissions", (string)null);
                 });
 
             modelBuilder.Entity("QTKD.Api.Domain.Customer", b =>
@@ -78,17 +126,48 @@ namespace QTKD.Api.Migrations
 
                     NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
 
+                    b.Property<string>("Address")
+                        .IsRequired()
+                        .HasMaxLength(300)
+                        .HasColumnType("character varying(300)");
+
+                    b.Property<string>("Code")
+                        .IsRequired()
+                        .HasMaxLength(30)
+                        .HasColumnType("character varying(30)");
+
+                    b.Property<string>("ContactInfo")
+                        .IsRequired()
+                        .HasMaxLength(200)
+                        .HasColumnType("character varying(200)");
+
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasMaxLength(200)
                         .HasColumnType("character varying(200)");
+
+                    b.Property<string>("RepresentativeName")
+                        .IsRequired()
+                        .HasMaxLength(150)
+                        .HasColumnType("character varying(150)");
 
                     b.Property<string>("Status")
                         .IsRequired()
                         .HasMaxLength(30)
                         .HasColumnType("character varying(30)");
 
+                    b.Property<string>("TaxCode")
+                        .IsRequired()
+                        .HasMaxLength(30)
+                        .HasColumnType("character varying(30)");
+
                     b.HasKey("Id");
+
+                    b.HasIndex("Code")
+                        .IsUnique();
+
+                    b.HasIndex("TaxCode")
+                        .IsUnique();
 
                     b.ToTable("Customers", (string)null);
 
@@ -96,14 +175,24 @@ namespace QTKD.Api.Migrations
                         new
                         {
                             Id = 1,
+                            Address = "TP. Hồ Chí Minh",
+                            Code = "CUS-001",
+                            ContactInfo = "minhphat@example.test",
                             Name = "Công ty Minh Phát",
-                            Status = "Active"
+                            RepresentativeName = "Nguyễn Minh",
+                            Status = "Active",
+                            TaxCode = "0310000001"
                         },
                         new
                         {
                             Id = 2,
+                            Address = "TP. Hồ Chí Minh",
+                            Code = "CUS-002",
+                            ContactInfo = "anbinh@example.test",
                             Name = "Công ty An Bình",
-                            Status = "Active"
+                            RepresentativeName = "Trần Bình",
+                            Status = "Active",
+                            TaxCode = "0310000002"
                         });
                 });
 
@@ -147,7 +236,13 @@ namespace QTKD.Api.Migrations
 
                     NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
 
+                    b.Property<int>("ContractId")
+                        .HasColumnType("integer");
+
                     b.Property<DateOnly>("EffectiveDate")
+                        .HasColumnType("date");
+
+                    b.Property<DateOnly>("EndDate")
                         .HasColumnType("date");
 
                     b.Property<string>("Name")
@@ -157,13 +252,17 @@ namespace QTKD.Api.Migrations
 
                     b.HasKey("Id");
 
+                    b.HasIndex("ContractId");
+
                     b.ToTable("PriceLists", (string)null);
 
                     b.HasData(
                         new
                         {
                             Id = 1,
+                            ContractId = 1,
                             EffectiveDate = new DateOnly(2026, 1, 1),
+                            EndDate = new DateOnly(2026, 12, 31),
                             Name = "Bảng giá dịch vụ 2026"
                         });
                 });
@@ -179,6 +278,15 @@ namespace QTKD.Api.Migrations
                     b.Navigation("Customer");
                 });
 
+            modelBuilder.Entity("QTKD.Api.Domain.ContractSubmission", b =>
+                {
+                    b.HasOne("QTKD.Api.Domain.Contract", null)
+                        .WithMany()
+                        .HasForeignKey("ContractId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+                });
+
             modelBuilder.Entity("QTKD.Api.Domain.PriceItem", b =>
                 {
                     b.HasOne("QTKD.Api.Domain.PriceList", "PriceList")
@@ -188,6 +296,15 @@ namespace QTKD.Api.Migrations
                         .IsRequired();
 
                     b.Navigation("PriceList");
+                });
+
+            modelBuilder.Entity("QTKD.Api.Domain.PriceList", b =>
+                {
+                    b.HasOne("QTKD.Api.Domain.Contract", null)
+                        .WithMany()
+                        .HasForeignKey("ContractId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
                 });
 
             modelBuilder.Entity("QTKD.Api.Domain.PriceList", b =>
