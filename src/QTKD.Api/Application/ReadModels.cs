@@ -9,4 +9,7 @@ public sealed record ContractReadModel(
     string CustomerName,
     DateOnly StartDate,
     DateOnly EndDate,
+    decimal? ContractValue,
+    string? PaymentTerms,
+    string? ServiceTerms,
     string Status);

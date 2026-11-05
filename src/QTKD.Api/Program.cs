@@ -11,8 +11,11 @@ var connectionString = builder.Configuration.GetConnectionString("QtkdDatabase")
 builder.Services.AddControllers();
 builder.Services.AddOpenApi();
 builder.Services.AddDbContext<QtkdDbContext>(options => options.UseNpgsql(connectionString));
-builder.Services.AddScoped<ICustomerReadService, CustomerReadService>();
+builder.Services.AddScoped<ICustomerService, CustomerService>();
 builder.Services.AddScoped<IContractReadService, ContractReadService>();
+builder.Services.AddScoped<IContractCommandService, ContractCommandService>();
+builder.Services.AddScoped<IPricingService, PricingService>();
+builder.Services.AddSingleton(TimeProvider.System);
 
 var app = builder.Build();
 

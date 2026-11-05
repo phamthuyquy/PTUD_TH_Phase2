@@ -58,7 +58,7 @@ dotnet ef migrations add <TenMigration> --project .\src\QTKD.Api --startup-proje
 dotnet ef database update --project .\src\QTKD.Api --startup-project .\src\QTKD.Api
 ```
 
-Migration ban đầu tạo `Customers`, `Contracts`, `PriceLists`, `PriceItems` và seed 2 khách hàng, hợp đồng `HD-2026-018` trạng thái `Draft`, một bảng giá có 2 dịch vụ.
+Migration `InitialCreate` tạo `Customers`, `Contracts`, `PriceLists`, `PriceItems` và seed dữ liệu mẫu. Migration `Week06BusinessFunctions` mở rộng thông tin Customer/Contract/Pricing và thêm `ContractSubmissions` để mô phỏng gửi trình duyệt, đồng thời gán phạm vi PriceList cho Contract.
 
 ## Build, test và chạy API
 
@@ -68,7 +68,7 @@ dotnet test .\QTKD.slnx
 dotnet run --project .\src\QTKD.Api --launch-profile https
 ```
 
-Các test xUnit kiểm tra response của hai controller GET bằng service giả lập, không cần PostgreSQL. Muốn xác nhận luồng database thật, cần khởi động Docker, áp dụng migration, chạy API rồi thử:
+Các test xUnit kiểm tra controller và service trên SQLite tạm thời, không cần PostgreSQL. Muốn xác nhận luồng database thật, cần khởi động Docker, áp dụng migration, chạy API rồi thử:
 
 ```powershell
 Invoke-RestMethod -Uri "https://localhost:7090/api/customers"
@@ -85,4 +85,4 @@ Swagger UI khi chạy Development: `https://localhost:7090/swagger`. Trang này 
 
 ## Phạm vi
 
-Tuần 05 bao gồm nền tảng dữ liệu và API đọc. Chưa triển khai tạo/cập nhật hợp đồng, gửi trình duyệt US03, phân quyền hoặc quy trình Approval; các nghiệp vụ này thuộc tuần sau. Xem [`docs/`](./docs/) để biết phạm vi test và phần minh chứng cần tự ghi sau khi chạy thực tế.
+Tuần 06 bổ sung CRUD Customer/Contract, kiểm tra CTR-01/02/03 khi sửa và gửi Contract, cùng API tạo/xem PriceList và PriceItem. US03 tạo bản ghi submit mô phỏng và chỉ chuyển Contract sang `PendingApproval`; chưa có Authentication/Authorization (AC01 chưa đạt), upload tệp thực tế, quy trình Approval, audit actor, ký điện tử hoặc xử lý PRC-03/versioning. `ServiceTerms` được dùng làm giả định demo cho nội dung bắt buộc CTR-02; xem [`docs/api.md`](./docs/api.md) để biết giả định và [`docs/verification.md`](./docs/verification.md) để biết phạm vi test và minh chứng sau khi chạy thực tế.
