@@ -64,7 +64,7 @@ PUT {{HostAddress}}/api/contracts/{{contractId}}
 Content-Type: application/json
 
 {
-  "contractNo": "HD-2026-018",
+  "contractNo": "HD-DEMO-001",
   "customerId": {{customerId}},
   "startDate": "2026-10-01",
   "endDate": "2027-09-30",
@@ -86,7 +86,7 @@ PUT {{HostAddress}}/api/contracts/{{contractId}}
 Content-Type: application/json
 
 {
-  "contractNo": "HD-2026-018",
+  "contractNo": "HD-DEMO-001",
   "customerId": {{customerId}},
   "startDate": "2026-10-01",
   "endDate": "2027-09-30",

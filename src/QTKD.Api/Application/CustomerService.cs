@@ -43,6 +43,14 @@ public sealed class CustomerService(QtkdDbContext dbContext) : ICustomerService
         CreateCustomerRequest request,
         CancellationToken cancellationToken)
     {
+        if (string.IsNullOrWhiteSpace(request.Name))
+        {
+            return ApiOperationResult<CustomerResponse>.Failure(
+                StatusCodes.Status400BadRequest,
+                "InvalidCustomer",
+                "Customer name is required.");
+        }
+
         var code = request.Code.Trim();
         var taxCode = request.TaxCode.Trim();
         if (await dbContext.Customers.AnyAsync(

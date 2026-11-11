@@ -56,7 +56,7 @@ GET danh sách trả `200 OK`, ví dụ:
 |---|---|---|---|
 | GET | `/api/contracts/{id}` | `200 OK`, Contract và Customer | `404` nếu không tồn tại |
 | POST | `/api/contracts` | `201 Created`, Contract mới ở `Draft` | `400` Customer không hợp lệ; `409` trùng số hợp đồng |
-| PUT | `/api/contracts/{id}` | `200 OK`, Contract đã cập nhật | `400` Customer không hợp lệ; `404` không tồn tại; `409` trạng thái không cho sửa |
+| PUT | `/api/contracts/{id}` | `200 OK`, Contract đã cập nhật | `400` Customer không hợp lệ hoặc request cố đổi `status`; `404` không tồn tại; `409` trạng thái không cho sửa |
 | POST | `/api/contracts/{id}/submit` | `200 OK`, `PendingApproval` và `approvalId` mô phỏng | `400` không đạt CTR-02; `404` không tồn tại; `409` sai trạng thái/xung đột |
 
 Request tạo Contract (trạng thái được service khởi tạo là `Draft`):
@@ -132,6 +132,8 @@ Quy tắc CTR-02 được cụ thể hóa cho demo như sau:
 - `ServiceTerms` không rỗng, được dùng làm nội dung bắt buộc đại diện cho hồ sơ.
 
 Phase 1 và đồ án chưa chỉ rõ danh sách trường/tệp bắt buộc theo từng loại hợp đồng. Vì vậy `ServiceTerms` là **giả định demo**, không phải quy tắc nghiệp vụ đã được xác nhận. Upload/lưu tệp thực tế chưa được triển khai.
+
+Contract status do workflow quản lý. `PUT /api/contracts/{id}` không cho phép yêu cầu một trạng thái cụ thể; nếu `status` khác `null` (ví dụ `"status": "Approved"`), API trả `400` với code `ContractStatusManagedByWorkflow` và không đổi dữ liệu. Trạng thái chỉ chuyển qua thao tác nghiệp vụ tương ứng.
 
 Khi submit thành công, API chỉ đổi trạng thái sang `PendingApproval`, đồng thời tạo một bản ghi submit mô phỏng. Không có các bước phê duyệt, phân công người duyệt, ký điện tử hay chuyển sang `Approved`. `Idempotency-Key` được lưu để request lặp cùng key nhận lại kết quả; unique constraint theo Contract bảo đảm không tạo submit thứ hai cho cùng Contract trong phiên bản này. Request cạnh tranh bị từ chối nếu một request khác đã đổi trạng thái.
 

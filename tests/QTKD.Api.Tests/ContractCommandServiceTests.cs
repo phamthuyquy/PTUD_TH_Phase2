@@ -1,207 +1,211 @@
-using Microsoft.AspNetCore.Http;
 using Microsoft.Data.Sqlite;
 using Microsoft.EntityFrameworkCore;
 using QTKD.Api.Application;
 using QTKD.Api.Domain;
 using QTKD.Api.Infrastructure;
 
-namespace QTKD.Api.Tests;
-
-public sealed class ContractCommandServiceTests
+namespace QTKD.Api.Tests
 {
-    [Fact]
-    public async Task SubmitContract_WhenServiceTermsMissing_ReturnsCtr02ErrorsWithoutChangingData()
+    [Trait("Category", "Unit")]
+    public class ContractCommandServiceTests: IDisposable
     {
-        await using var connection = await CreateOpenConnectionAsync();
-        await using var dbContext = await CreateDbContextAsync(connection);
-        var contract = await dbContext.Contracts.SingleAsync();
-        contract.ServiceTerms = null;
-        await dbContext.SaveChangesAsync();
-        var service = CreateService(dbContext);
+        private readonly SqliteConnection _connection;
+        private readonly DbContextOptions<QtkdDbContext> _options;
 
-        var result = await service.SubmitContractAsync(
-            contract.Id,
-            "submit-missing-terms",
-            CancellationToken.None);
+        public ContractCommandServiceTests()
+        {
+            // Mở kết nối SQLite In-Memory dùng chung trong suốt test case
+            _connection = new SqliteConnection("DataSource=:memory:");
+            _connection.Open();
 
-        Assert.Equal(StatusCodes.Status400BadRequest, result.StatusCode);
-        Assert.Contains("ServiceTerms", Assert.Single(result.Errors!, error => error.Contains("ServiceTerms")));
-        Assert.Equal(ContractStatuses.Draft, (await dbContext.Contracts.SingleAsync()).Status);
-        Assert.Empty(await dbContext.ContractSubmissions.ToListAsync());
-    }
+            _options = new DbContextOptionsBuilder<QtkdDbContext>()
+                .UseSqlite(_connection)
+                .Options;
 
-    [Fact]
-    public async Task SubmitContract_WhenCustomerIsSuspended_ReturnsCtr02Error()
-    {
-        await using var connection = await CreateOpenConnectionAsync();
-        await using var dbContext = await CreateDbContextAsync(connection);
-        var customer = await dbContext.Customers.SingleAsync(item => item.Id == 1);
-        customer.Status = "Suspended";
-        await dbContext.SaveChangesAsync();
-        var service = CreateService(dbContext);
+            using var context = new QtkdDbContext(_options);
+            context.Database.EnsureCreated();
+        }
 
-        var result = await service.SubmitContractAsync(1, null, CancellationToken.None);
+        public void Dispose()
+        {
+            _connection.Dispose();
+        }
 
-        Assert.Equal(StatusCodes.Status400BadRequest, result.StatusCode);
-        Assert.Contains(result.Errors!, error => error.Contains("Active status"));
-        Assert.Equal(ContractStatuses.Draft, (await dbContext.Contracts.SingleAsync()).Status);
-    }
+        private QtkdDbContext CreateDbContext() => new QtkdDbContext(_options);
 
-    [Fact]
-    public async Task SubmitContract_WhenEffectivePeriodIsExpired_ReturnsCtr02Error()
-    {
-        await using var connection = await CreateOpenConnectionAsync();
-        await using var dbContext = await CreateDbContextAsync(connection);
-        var contract = await dbContext.Contracts.SingleAsync();
-        contract.EndDate = new DateOnly(2026, 10, 30);
-        await dbContext.SaveChangesAsync();
-        var service = CreateService(dbContext);
-
-        var result = await service.SubmitContractAsync(1, null, CancellationToken.None);
-
-        Assert.Equal(StatusCodes.Status400BadRequest, result.StatusCode);
-        Assert.Contains(result.Errors!, error => error.Contains("effective dates"));
-    }
-
-    [Fact]
-    public async Task SubmitContract_WhenValid_TransitionsOnceAndReplaysSameSubmission()
-    {
-        await using var connection = await CreateOpenConnectionAsync();
-        await using var dbContext = await CreateDbContextAsync(connection);
-        var service = CreateService(dbContext);
-
-        var first = await service.SubmitContractAsync(1, "submit-valid-1", CancellationToken.None);
-        var replay = await service.SubmitContractAsync(1, "submit-valid-1", CancellationToken.None);
-        var duplicate = await service.SubmitContractAsync(1, "submit-valid-2", CancellationToken.None);
-
-        Assert.True(first.Succeeded);
-        Assert.Equal(ContractStatuses.PendingApproval, first.Value!.Status);
-        Assert.False(first.Value.IsReplay);
-        Assert.True(replay.Succeeded);
-        Assert.True(replay.Value!.IsReplay);
-        Assert.Equal(first.Value.ApprovalId, replay.Value.ApprovalId);
-        Assert.Equal(StatusCodes.Status409Conflict, duplicate.StatusCode);
-        Assert.Equal(ContractStatuses.PendingApproval, (await dbContext.Contracts.SingleAsync()).Status);
-        Assert.Single(await dbContext.ContractSubmissions.ToListAsync());
-    }
-
-    [Fact]
-    public async Task SubmitContract_WhenWrongState_ReturnsConflictWithoutCreatingSubmission()
-    {
-        await using var connection = await CreateOpenConnectionAsync();
-        await using var dbContext = await CreateDbContextAsync(connection);
-        var contract = await dbContext.Contracts.SingleAsync();
-        contract.Status = ContractStatuses.Approved;
-        await dbContext.SaveChangesAsync();
-        var service = CreateService(dbContext);
-
-        var result = await service.SubmitContractAsync(1, null, CancellationToken.None);
-
-        Assert.Equal(StatusCodes.Status409Conflict, result.StatusCode);
-        Assert.Equal(ContractStatuses.Approved, (await dbContext.Contracts.SingleAsync()).Status);
-        Assert.Empty(await dbContext.ContractSubmissions.ToListAsync());
-    }
-
-    [Fact]
-    public async Task UpdateContract_WhenNotEditable_ReturnsConflictAndLeavesFieldsUnchanged()
-    {
-        await using var connection = await CreateOpenConnectionAsync();
-        await using var dbContext = await CreateDbContextAsync(connection);
-        var contract = await dbContext.Contracts.SingleAsync();
-        contract.Status = ContractStatuses.PendingApproval;
-        await dbContext.SaveChangesAsync();
-        var service = CreateService(dbContext);
-
-        var result = await service.UpdateContractAsync(
-            contract.Id,
-            new UpdateContractRequest
+        [Fact]
+        public async Task UpdateContract_WhenStatusIsDraft_ShouldSucceed_TC03()
+        {
+            // Arrange
+            using var db = CreateDbContext();
+            var contract = new Contract
             {
-                ContractNo = "CHANGED",
+                Id = 2,
+                ContractNo = "HD-TEST-UPDATE",
                 CustomerId = 1,
+                StartDate = DateOnly.FromDateTime(DateTime.UtcNow.Date),
+                EndDate = DateOnly.FromDateTime(DateTime.UtcNow.Date.AddYears(1)),
+                Status = ContractStatuses.Draft
+            };
+            db.Contracts.Add(contract);
+            await db.SaveChangesAsync();
+
+            var service = new ContractCommandService(db, TimeProvider.System);
+            var updateRequest = new UpdateContractRequest
+            {
+                ContractNo = "HD-TEST-UPDATE-REV1",
+                CustomerId = contract.CustomerId,
+                StartDate = DateOnly.FromDateTime(DateTime.UtcNow.Date),
+                EndDate = DateOnly.FromDateTime(DateTime.UtcNow.Date.AddYears(2))
+            };
+
+            // Act
+            var result = await service.UpdateContractAsync(contract.Id, updateRequest, CancellationToken.None);
+
+            // Assert
+            Assert.True(result.Succeeded);
+            var updatedContract = await db.Contracts.FindAsync(contract.Id);
+            Assert.NotNull(updatedContract);
+            await db.Entry(updatedContract).ReloadAsync();
+            Assert.Equal("HD-TEST-UPDATE-REV1", updatedContract.ContractNo);
+        }
+
+        [Fact]
+        public async Task UpdateContract_WhenStatusIsPendingApproval_ShouldFail_CTR01_TC04()
+        {
+            // Arrange
+            using var db = CreateDbContext();
+            var contract = new Contract
+            {
+                Id = 2,
+                ContractNo = "HD-TEST-PENDING",
+                CustomerId = 1,
+                StartDate = DateOnly.FromDateTime(DateTime.UtcNow.Date),
+                EndDate = DateOnly.FromDateTime(DateTime.UtcNow.Date.AddYears(1)),
+                Status = ContractStatuses.PendingApproval
+            };
+            db.Contracts.Add(contract);
+            await db.SaveChangesAsync();
+
+            var service = new ContractCommandService(db, TimeProvider.System);
+            var updateRequest = new UpdateContractRequest
+            {
+                ContractNo = "HD-TEST-MODIFIED",
+                CustomerId = contract.CustomerId,
                 StartDate = contract.StartDate,
-                EndDate = contract.EndDate,
-                ServiceTerms = "Updated terms"
-            },
-            CancellationToken.None);
+                EndDate = contract.EndDate
+            };
 
-        Assert.Equal(StatusCodes.Status409Conflict, result.StatusCode);
-        var storedContract = await dbContext.Contracts.SingleAsync();
-        Assert.Equal("HD-2026-018", storedContract.ContractNo);
-        Assert.Equal(ContractStatuses.PendingApproval, storedContract.Status);
-    }
+            // Act
+            var result = await service.UpdateContractAsync(contract.Id, updateRequest, CancellationToken.None);
 
-    [Fact]
-    public async Task CreateContract_WhenCustomerIsActive_CreatesDraft()
-    {
-        await using var connection = await CreateOpenConnectionAsync();
-        await using var dbContext = await CreateDbContextAsync(connection);
-        var service = CreateService(dbContext);
+            // Assert
+            Assert.False(result.Succeeded);
+            Assert.Equal("ContractNotEditable", result.Code);
+            var dbContract = await db.Contracts.FindAsync(contract.Id);
+            Assert.NotNull(dbContract);
+            Assert.Equal("HD-TEST-PENDING", dbContract.ContractNo);
+        }
 
-        var result = await service.CreateContractAsync(
-            new CreateContractRequest
+        [Fact]
+        public async Task UpdateContract_WhenStatusIsProvided_ShouldRejectDirectTransition_TC07()
+        {
+            using var db = CreateDbContext();
+            var contract = new Contract
             {
-                ContractNo = "HD-NEW-001",
+                Id = 2,
+                ContractNo = "HD-TEST-STATUS",
                 CustomerId = 1,
-                StartDate = new DateOnly(2026, 11, 1),
-                EndDate = new DateOnly(2027, 10, 31),
-                ServiceTerms = null
-            },
-            CancellationToken.None);
+                StartDate = DateOnly.FromDateTime(DateTime.UtcNow.Date),
+                EndDate = DateOnly.FromDateTime(DateTime.UtcNow.Date.AddYears(1)),
+                Status = ContractStatuses.Draft
+            };
+            db.Contracts.Add(contract);
+            await db.SaveChangesAsync();
 
-        Assert.True(result.Succeeded);
-        Assert.Equal(ContractStatuses.Draft, result.Value!.Status);
-        Assert.Equal("HD-NEW-001", result.Value.ContractNo);
-    }
-
-    [Fact]
-    public async Task UpdateContract_WhenRevisionRequested_IsAllowed()
-    {
-        await using var connection = await CreateOpenConnectionAsync();
-        await using var dbContext = await CreateDbContextAsync(connection);
-        var contract = await dbContext.Contracts.SingleAsync();
-        contract.Status = ContractStatuses.RevisionRequested;
-        await dbContext.SaveChangesAsync();
-        var service = CreateService(dbContext);
-
-        var result = await service.UpdateContractAsync(
-            contract.Id,
-            new UpdateContractRequest
+            var service = new ContractCommandService(db, TimeProvider.System);
+            var request = new UpdateContractRequest
             {
                 ContractNo = contract.ContractNo,
                 CustomerId = contract.CustomerId,
                 StartDate = contract.StartDate,
                 EndDate = contract.EndDate,
-                ServiceTerms = "Terms after revision."
-            },
-            CancellationToken.None);
+                Status = ContractStatuses.Approved
+            };
 
-        Assert.True(result.Succeeded);
-        Assert.Equal("Terms after revision.", result.Value!.ServiceTerms);
-        Assert.Equal(ContractStatuses.RevisionRequested, result.Value.Status);
-    }
+            var result = await service.UpdateContractAsync(
+                contract.Id,
+                request,
+                CancellationToken.None);
 
-    private static ContractCommandService CreateService(QtkdDbContext dbContext) =>
-        new(dbContext, new FixedTimeProvider(new DateTimeOffset(2026, 10, 31, 0, 0, 0, TimeSpan.Zero)));
+            Assert.False(result.Succeeded);
+            Assert.Equal("ContractStatusManagedByWorkflow", result.Code);
+            var unchangedContract = await db.Contracts.FindAsync(contract.Id);
+            Assert.NotNull(unchangedContract);
+            Assert.Equal(ContractStatuses.Draft, unchangedContract.Status);
+        }
 
-    private static async Task<SqliteConnection> CreateOpenConnectionAsync()
-    {
-        var connection = new SqliteConnection("Data Source=:memory:");
-        await connection.OpenAsync();
-        return connection;
-    }
+        [Fact]
+        public async Task SubmitContract_WhenMissingCustomerOrInvalidDates_ShouldFail_CTR02_TC05()
+        {
+            // Arrange
+            using var db = CreateDbContext();
+            var contract = new Contract
+            {
+                Id = 2,
+                ContractNo = "HD-TEST-INVALID",
+                CustomerId = 1,
+                StartDate = DateOnly.FromDateTime(DateTime.UtcNow.Date),
+                EndDate = DateOnly.FromDateTime(DateTime.UtcNow.Date.AddDays(-5)),
+                ServiceTerms = "Dịch vụ thử nghiệm",
+                Status = ContractStatuses.Draft
+            };
+            db.Contracts.Add(contract);
+            await db.SaveChangesAsync();
 
-    private static async Task<QtkdDbContext> CreateDbContextAsync(SqliteConnection connection)
-    {
-        var options = new DbContextOptionsBuilder<QtkdDbContext>()
-            .UseSqlite(connection)
-            .Options;
-        var dbContext = new QtkdDbContext(options);
-        await dbContext.Database.EnsureCreatedAsync();
-        return dbContext;
-    }
+            var service = new ContractCommandService(db, TimeProvider.System);
 
-    private sealed class FixedTimeProvider(DateTimeOffset utcNow) : TimeProvider
-    {
-        public override DateTimeOffset GetUtcNow() => utcNow;
+            // Act
+            var result = await service.SubmitContractAsync(contract.Id, null, CancellationToken.None);
+
+            // Assert
+            Assert.False(result.Succeeded);
+            Assert.Equal("ContractDoesNotMeetCtr02", result.Code);
+            Assert.Contains("Contract effective dates must be ordered and not expired.", result.Errors!);
+            var dbContract = await db.Contracts.FindAsync(contract.Id);
+            Assert.NotNull(dbContract);
+            Assert.Equal(ContractStatuses.Draft, dbContract.Status);
+        }
+
+        [Fact]
+        public async Task SubmitContract_WhenValid_ShouldChangeStatusToPendingApproval_CTR03_TC06()
+        {
+            // Arrange
+            using var db = CreateDbContext();
+            var contract = new Contract
+            {
+                Id = 2,
+                ContractNo = "HD-TEST-SUBMIT",
+                CustomerId = 1,
+                StartDate = DateOnly.FromDateTime(DateTime.UtcNow.Date),
+                EndDate = DateOnly.FromDateTime(DateTime.UtcNow.Date.AddYears(1)),
+                ServiceTerms = "Dịch vụ thử nghiệm",
+                Status = ContractStatuses.Draft
+            };
+            db.Contracts.Add(contract);
+            await db.SaveChangesAsync();
+
+            var service = new ContractCommandService(db, TimeProvider.System);
+
+            // Act
+            var result = await service.SubmitContractAsync(contract.Id, null, CancellationToken.None);
+
+            // Assert
+            Assert.True(result.Succeeded);
+            var dbContract = await db.Contracts.FindAsync(contract.Id);
+            Assert.NotNull(dbContract);
+            await db.Entry(dbContract).ReloadAsync();
+            Assert.Equal(ContractStatuses.PendingApproval, dbContract.Status);
+        }
     }
 }

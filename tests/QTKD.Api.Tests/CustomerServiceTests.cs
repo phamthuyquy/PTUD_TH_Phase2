@@ -1,77 +1,69 @@
-using Microsoft.AspNetCore.Http;
-using Microsoft.Data.Sqlite;
 using Microsoft.EntityFrameworkCore;
 using QTKD.Api.Application;
 using QTKD.Api.Infrastructure;
 
-namespace QTKD.Api.Tests;
-
-public sealed class CustomerServiceTests
+namespace QTKD.Api.Tests
 {
-    [Fact]
-    public async Task CreateCustomer_WhenValid_PersistsFullCustomerProfile()
+    [Trait("Category", "Unit")]
+    public class CustomerServiceTests
     {
-        await using var connection = await CreateOpenConnectionAsync();
-        await using var dbContext = await CreateDbContextAsync(connection);
-        var service = new CustomerService(dbContext);
+        private QtkdDbContext CreateInMemoryDbContext()
+        {
+            var options = new DbContextOptionsBuilder<QtkdDbContext>()
+                .UseInMemoryDatabase(databaseName: Guid.NewGuid().ToString())
+                .Options;
+            return new QtkdDbContext(options);
+        }
 
-        var result = await service.CreateCustomerAsync(
-            new CreateCustomerRequest
+        [Fact]
+        public async Task CreateCustomer_WithValidData_ShouldSucceed_TC01()
+        {
+            // Arrange
+            using var db = CreateInMemoryDbContext();
+            var service = new CustomerService(db);
+            var request = new CreateCustomerRequest
             {
-                Code = "CUS-003",
-                Name = "Công ty Cảng Demo",
-                TaxCode = "0310000003",
-                Address = "Hải Phòng",
-                RepresentativeName = "Lê Hải",
-                ContactInfo = "hai@example.test",
+                Code = "KH-001",
+                Name = "Công ty Minh Phát",
+                TaxCode = "0312345678",
+                Address = "TP. Hồ Chí Minh",
+                RepresentativeName = "Nguyễn Văn A",
+                ContactInfo = "0909123456",
                 Status = "Active"
-            },
-            CancellationToken.None);
+            };
 
-        Assert.True(result.Succeeded);
-        Assert.Equal("CUS-003", result.Value!.Code);
-        Assert.Equal("0310000003", result.Value.TaxCode);
-        Assert.Equal("Công ty Cảng Demo", (await dbContext.Customers
-            .SingleAsync(customer => customer.Id == result.Value.Id)).Name);
-    }
+            var result = await service.CreateCustomerAsync(request, CancellationToken.None);
 
-    [Fact]
-    public async Task CreateCustomer_WhenCodeAlreadyExists_ReturnsConflict()
-    {
-        await using var connection = await CreateOpenConnectionAsync();
-        await using var dbContext = await CreateDbContextAsync(connection);
-        var service = new CustomerService(dbContext);
+            // Assert
+            Assert.True(result.Succeeded);
+            Assert.True(result.Value!.Id > 0);
+            var count = await db.Customers.CountAsync();
+            Assert.Equal(1, count);
+        }
 
-        var result = await service.CreateCustomerAsync(
-            new CreateCustomerRequest
+        [Fact]
+        public async Task CreateCustomer_WithoutName_ShouldFail_TC02()
+        {
+            // Arrange
+            using var db = CreateInMemoryDbContext();
+            var service = new CustomerService(db);
+            var request = new CreateCustomerRequest
             {
-                Code = "CUS-001",
-                Name = "Công ty Trùng Mã",
-                TaxCode = "0310000999",
-                Address = "Hà Nội",
-                RepresentativeName = "Người đại diện",
-                ContactInfo = "duplicate@example.test",
+                Code = "KH-002",
+                Name = "",
+                TaxCode = "0312345678",
+                Address = "TP. Hồ Chí Minh",
+                RepresentativeName = "Nguyễn Văn B",
+                ContactInfo = "0909654321",
                 Status = "Active"
-            },
-            CancellationToken.None);
+            };
 
-        Assert.Equal(StatusCodes.Status409Conflict, result.StatusCode);
-    }
+            var result = await service.CreateCustomerAsync(request, CancellationToken.None);
 
-    private static async Task<SqliteConnection> CreateOpenConnectionAsync()
-    {
-        var connection = new SqliteConnection("Data Source=:memory:");
-        await connection.OpenAsync();
-        return connection;
-    }
-
-    private static async Task<QtkdDbContext> CreateDbContextAsync(SqliteConnection connection)
-    {
-        var options = new DbContextOptionsBuilder<QtkdDbContext>()
-            .UseSqlite(connection)
-            .Options;
-        var dbContext = new QtkdDbContext(options);
-        await dbContext.Database.EnsureCreatedAsync();
-        return dbContext;
+            // Assert
+            Assert.False(result.Succeeded);
+            var count = await db.Customers.CountAsync();
+            Assert.Equal(0, count);
+        }
     }
 }

@@ -1,52 +1,84 @@
-using Microsoft.AspNetCore.Mvc;
+using System.Net;
+using System.Net.Http.Json;
+using System.Text.Json;
 using QTKD.Api.Application;
-using QTKD.Api.Controllers;
 
-namespace QTKD.Api.Tests;
-
-public sealed class CustomersControllerTests
+namespace QTKD.Api.Tests
 {
-    [Fact]
-    public async Task GetCustomers_ReturnsCustomerList()
+    [Trait("Category", "Integration")]
+    public sealed class CustomersControllerTests : IDisposable
     {
-        IReadOnlyList<CustomerReadModel> customers =
-        [
-            new CustomerReadModel(1, "Công ty Minh Phát", "Active"),
-            new CustomerReadModel(2, "Công ty An Bình", "Active")
-        ];
-        var controller = new CustomersController(new StubCustomerReadService(customers));
+        private readonly IntegrationApiFactory _factory;
+        private readonly HttpClient _client;
 
-        var actionResult = await controller.GetCustomers(CancellationToken.None);
-
-        var result = Assert.IsType<OkObjectResult>(actionResult.Result);
-        var response = Assert.IsAssignableFrom<IReadOnlyList<CustomerReadModel>>(result.Value);
-        Assert.Equal(2, response.Count);
-        Assert.Equal("Công ty Minh Phát", response[0].Name);
-    }
-
-    private sealed class StubCustomerReadService(
-        IReadOnlyList<CustomerReadModel> customers) : ICustomerService
-    {
-        public Task<IReadOnlyList<CustomerReadModel>> GetCustomersAsync(
-            CancellationToken cancellationToken)
+        public CustomersControllerTests()
         {
-            return Task.FromResult(customers);
+            _factory = new IntegrationApiFactory();
+            _client = _factory.CreateClient();
+            _factory.EnsureDatabaseCreated();
         }
 
-        public Task<CustomerResponse?> GetCustomerByIdAsync(
-            int id,
-            CancellationToken cancellationToken) =>
-            throw new NotImplementedException();
+        [Fact]
+        public async Task CreateCustomer_ValidPayload_CreatesAndCanBeReadBack_TC01()
+        {
+            var request = new CreateCustomerRequest
+            {
+                Code = $"KH-{Guid.NewGuid():N}"[..23],
+                Name = "Công ty Minh Phát",
+                TaxCode = Guid.NewGuid().ToString("N")[..30],
+                Address = "TP. Hồ Chí Minh",
+                RepresentativeName = "Nguyễn Văn A",
+                ContactInfo = "0909123456",
+                Status = "Active"
+            };
 
-        public Task<ApiOperationResult<CustomerResponse>> CreateCustomerAsync(
-            CreateCustomerRequest request,
-            CancellationToken cancellationToken) =>
-            throw new NotImplementedException();
+            var createResponse = await _client.PostAsJsonAsync("/api/customers", request);
 
-        public Task<ApiOperationResult<CustomerResponse>> UpdateCustomerAsync(
-            int id,
-            UpdateCustomerRequest request,
-            CancellationToken cancellationToken) =>
-            throw new NotImplementedException();
+            Assert.Equal(HttpStatusCode.Created, createResponse.StatusCode);
+            var createdCustomer = await createResponse.Content.ReadFromJsonAsync<CustomerResponse>();
+            Assert.NotNull(createdCustomer);
+            Assert.True(createdCustomer.Id > 0);
+            Assert.Equal(request.Code, createdCustomer.Code);
+            Assert.Equal(request.Name, createdCustomer.Name);
+            Assert.Equal(request.Status, createdCustomer.Status);
+
+            var readResponse = await _client.GetAsync($"/api/customers/{createdCustomer.Id}");
+
+            Assert.Equal(HttpStatusCode.OK, readResponse.StatusCode);
+            var readCustomer = await readResponse.Content.ReadFromJsonAsync<CustomerResponse>();
+            Assert.NotNull(readCustomer);
+            Assert.Equal(createdCustomer.Id, readCustomer.Id);
+            Assert.Equal(createdCustomer.Code, readCustomer.Code);
+            Assert.Equal(createdCustomer.Name, readCustomer.Name);
+            Assert.Equal(createdCustomer.TaxCode, readCustomer.TaxCode);
+        }
+
+        [Fact]
+        public async Task CreateCustomer_MissingRequiredName_IsRejectedWithValidationError_TC02()
+        {
+            var request = new CreateCustomerRequest
+            {
+                Code = $"KH-{Guid.NewGuid():N}"[..23],
+                Name = " ",
+                TaxCode = Guid.NewGuid().ToString("N")[..30],
+                Address = "TP. Hồ Chí Minh",
+                RepresentativeName = "Nguyễn Văn A",
+                ContactInfo = "0909123456",
+                Status = "Active"
+            };
+
+            var response = await _client.PostAsJsonAsync("/api/customers", request);
+
+            Assert.Equal(HttpStatusCode.BadRequest, response.StatusCode);
+            using var body = await JsonDocument.ParseAsync(
+                await response.Content.ReadAsStreamAsync());
+            Assert.True(body.RootElement.GetProperty("errors").TryGetProperty("Name", out _));
+        }
+
+        public void Dispose()
+        {
+            _client.Dispose();
+            _factory.Dispose();
+        }
     }
 }

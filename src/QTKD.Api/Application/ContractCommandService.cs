@@ -76,6 +76,14 @@ public sealed class ContractCommandService(
         UpdateContractRequest request,
         CancellationToken cancellationToken)
     {
+        if (request.Status is not null)
+        {
+            return ApiOperationResult<ContractReadModel>.Failure(
+                StatusCodes.Status400BadRequest,
+                "ContractStatusManagedByWorkflow",
+                "Contract status is managed by the contract workflow and cannot be changed directly.");
+        }
+
         var existingContract = await dbContext.Contracts
             .AsNoTracking()
             .SingleOrDefaultAsync(item => item.Id == id, cancellationToken);

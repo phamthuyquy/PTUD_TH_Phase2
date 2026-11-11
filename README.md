@@ -1,88 +1,127 @@
 # QTKD — Phase 2
 
-ASP.NET Core Web API dùng .NET 10, Entity Framework Core và PostgreSQL. Giữ nguyên repository này xuyên suốt Tuần 05–07.
+ASP.NET Core Web API dùng .NET 10, Entity Framework Core và PostgreSQL. Repository này được dùng xuyên suốt Tuần 05–07; Tuần 06 và 07 tiếp tục trên nền Tuần 05, không tạo hệ thống khác.
 
-## Cấu trúc repository
+## Cấu trúc
 
 ```text
 src/QTKD.Api/           Web API, domain, application, EF Core và migrations
-tests/QTKD.Api.Tests/   xUnit tests cho các API GET
-docs/                   Kiến trúc, API và checklist minh chứng
+tests/QTKD.Api.Tests/   xUnit service tests và API integration tests
+docs/                   Kiến trúc, API và minh chứng Tuần 05–07
 docker-compose.yml      PostgreSQL cục bộ qua Docker
-README.md               Hướng dẫn chạy và kiểm thử
+QTKD.slnx               Solution
 ```
 
-## Yêu cầu môi trường
+- Service/business-rule tests được gắn trait `Category=Unit`.
+- Integration tests gọi API qua `WebApplicationFactory`; mỗi test dùng SQLite in-memory riêng, có schema, seed và ràng buộc quan hệ. Không test nào kết nối database PostgreSQL có dữ liệu thật.
+
+## Yêu cầu
 
 - .NET 10 SDK
-- Docker Desktop nếu dùng PostgreSQL bằng Docker
-- EF Core CLI (`dotnet-ef`) phiên bản 10
+- Docker Desktop nếu chạy PostgreSQL cục bộ
+- EF Core CLI (`dotnet-ef`) phiên bản 10 nếu chạy migration
 
-## Chạy PostgreSQL bằng Docker
+Kiểm tra .NET/EF CLI:
 
-PostgreSQL trong container dùng cổng `5432`; cổng host Windows mặc định là `5435` và chỉ nhận kết nối từ máy này. Tại thư mục repository, tạo `.env` cục bộ:
+```powershell
+dotnet --version
+dotnet ef --version
+```
+
+Nếu chưa cài EF CLI:
+
+```powershell
+dotnet tool install --global dotnet-ef --version 10.*
+```
+
+## Clone và cấu hình PostgreSQL
+
+Tại thư mục repository:
 
 ```powershell
 if (-not (Test-Path .\.env)) { Copy-Item .env.example .env }
 notepad .env
+```
+
+Đặt `QTKD_POSTGRES_PASSWORD` thành mật khẩu cục bộ mạnh trong `.env`; không commit file này. Khởi động PostgreSQL:
+
+```powershell
 docker compose up -d
 docker compose ps
 ```
 
-Đổi `QTKD_POSTGRES_PASSWORD` trong `.env` thành mật khẩu cục bộ trước khi chạy Compose. `.env` đã được Git ignore; không commit mật khẩu. Muốn dùng cổng host khác, chỉnh `QTKD_POSTGRES_PORT` trong `.env`, rồi dùng cùng cổng đó trong connection string.
-
-## Cấu hình kết nối API
-
-Từ PowerShell tại root repository:
+Đặt connection string trong .NET User Secrets, không ghi mật khẩu vào `appsettings*.json` hoặc source:
 
 ```powershell
 $dbPassword = Read-Host "Mật khẩu PostgreSQL"
-$connectionString = "Host=localhost;Port=5435;Database=qtkd;Username=postgres;Password=$dbPassword"
+$connectionString = "Host=localhost;Port=5435;Database=qtkd;Username=postgres;" + "Password=" + $dbPassword
 dotnet user-secrets set "ConnectionStrings:QtkdDatabase" $connectionString --project .\src\QTKD.Api
+Remove-Variable dbPassword, connectionString
 ```
 
-Nhập cùng mật khẩu đang đặt trong `QTKD_POSTGRES_PASSWORD` của file `.env`. Project đã có `UserSecretsId`, nên không cần chạy lại `dotnet user-secrets init`. Nếu đổi `QTKD_POSTGRES_PORT`, thay `5435` bằng cổng host mới. User-secrets giữ connection string cục bộ; không ghi mật khẩu vào `appsettings*.json` hoặc Git.
+Nhập cùng mật khẩu với `QTKD_POSTGRES_PASSWORD`. Nếu đổi `QTKD_POSTGRES_PORT` trong `.env`, dùng cổng host đó thay cho `5435`.
 
-## Migration và database
+## Migration và chạy API
 
-Migration `InitialCreate` đã có trong source. Để tạo/cập nhật database mới:
+Repository đã có migration `InitialCreate` và `Week06BusinessFunctions`; không tạo lại `InitialCreate`. Áp dụng migration vào database:
 
 ```powershell
+$env:ASPNETCORE_ENVIRONMENT = "Development"
 dotnet ef database update --project .\src\QTKD.Api --startup-project .\src\QTKD.Api
 ```
 
-Không chạy lại `migrations add InitialCreate` trên repository đã có migration. Khi mô hình dữ liệu thay đổi ở các tuần sau, tạo migration mới với tên phù hợp rồi cập nhật database:
+`InitialCreate` tạo các bảng nền và dữ liệu mẫu; `Week06BusinessFunctions` mở rộng Customer/Contract/Pricing và thêm `ContractSubmissions`.
 
-```powershell
-dotnet ef migrations add <TenMigration> --project .\src\QTKD.Api --startup-project .\src\QTKD.Api
-dotnet ef database update --project .\src\QTKD.Api --startup-project .\src\QTKD.Api
-```
-
-Migration `InitialCreate` tạo `Customers`, `Contracts`, `PriceLists`, `PriceItems` và seed dữ liệu mẫu. Migration `Week06BusinessFunctions` mở rộng thông tin Customer/Contract/Pricing và thêm `ContractSubmissions` để mô phỏng gửi trình duyệt, đồng thời gán phạm vi PriceList cho Contract.
-
-## Build, test và chạy API
+Build và chạy API:
 
 ```powershell
 dotnet build .\QTKD.slnx
-dotnet test .\QTKD.slnx
 dotnet run --project .\src\QTKD.Api --launch-profile https
 ```
 
-Các test xUnit kiểm tra controller và service trên SQLite tạm thời, không cần PostgreSQL. Muốn xác nhận luồng database thật, cần khởi động Docker, áp dụng migration, chạy API rồi thử:
+Khi API chạy:
+
+- Swagger UI: `https://localhost:7090/swagger`
+- OpenAPI: `https://localhost:7090/openapi/v1.json`
+- Request demo tuần 06: [`src/QTKD.Api/QTKD.Api.http`](./src/QTKD.Api/QTKD.Api.http)
+- Danh sách route và mẫu request/response: [`docs/api.md`](./docs/api.md)
+
+Các request trong file `.http` dùng mã demo cố định; đổi mã Customer, mã số thuế và số Contract nếu chạy lại trên database đã có dữ liệu.
+
+## Chạy test Tuần 07
+
+Tại root repository:
 
 ```powershell
-Invoke-RestMethod -Uri "https://localhost:7090/api/customers"
-Invoke-RestMethod -Uri "https://localhost:7090/api/contracts/1"
+dotnet test .\QTKD.slnx
 ```
 
-Swagger UI khi chạy Development: `https://localhost:7090/swagger`. Trang này dùng OpenAPI document tại `https://localhost:7090/openapi/v1.json`; có thể mở UI, chọn endpoint và nhấn **Try it out** để gửi request. Contract không tồn tại (ví dụ `/api/contracts/999`) trả `404 Not Found`. Request mẫu có trong [`src/QTKD.Api/QTKD.Api.http`](./src/QTKD.Api/QTKD.Api.http).
+Chạy riêng từng nhóm:
+
+```powershell
+dotnet test .\tests\QTKD.Api.Tests\QTKD.Api.Tests.csproj --filter "Category=Unit"
+dotnet test .\tests\QTKD.Api.Tests\QTKD.Api.Tests.csproj --filter "Category=Integration"
+```
+
+Lưu kết quả TRX để làm minh chứng:
+
+```powershell
+dotnet test .\QTKD.slnx --logger "trx;LogFileName=week07-tests.trx" --results-directory .\docs\test-results
+```
+
+Integration test chạy bằng SQLite in-memory biệt lập, tạo schema và dữ liệu seed riêng cho từng test; không cần Docker, PostgreSQL hoặc User Secrets. Báo cáo kiểm thử và bảng TC01–TC08 được ghi tại [`docs/verification.md`](./docs/verification.md). File TRX được tạo khi chạy lệnh và nằm dưới `docs/test-results/`.
 
 ## Tài liệu và minh chứng
 
-- [Sơ đồ kiến trúc](./docs/architecture.md)
-- [API và cách thử](./docs/api.md)
-- [Checklist kiểm chứng/minh chứng](./docs/verification.md)
+- [Kiến trúc](./docs/architecture.md)
+- [API Tuần 06](./docs/api.md)
+- [Đối chiếu yêu cầu và minh chứng Tuần 05–07](./docs/verification.md)
 
-## Phạm vi
+Nội dung đối chiếu dựa trên `TH_Phase2_QTKD.pdf`, các migration, source code, test và tài liệu trong repository. Các ảnh/video demo hoặc bằng chứng PostgreSQL thật cần được nhóm tự lưu khi thực hiện demo trên môi trường nộp bài; test SQLite không thay thế bước đó.
 
-Tuần 06 bổ sung CRUD Customer/Contract, kiểm tra CTR-01/02/03 khi sửa và gửi Contract, cùng API tạo/xem PriceList và PriceItem. US03 tạo bản ghi submit mô phỏng và chỉ chuyển Contract sang `PendingApproval`; chưa có Authentication/Authorization (AC01 chưa đạt), upload tệp thực tế, quy trình Approval, audit actor, ký điện tử hoặc xử lý PRC-03/versioning. `ServiceTerms` được dùng làm giả định demo cho nội dung bắt buộc CTR-02; xem [`docs/api.md`](./docs/api.md) để biết giả định và [`docs/verification.md`](./docs/verification.md) để biết phạm vi test và minh chứng sau khi chạy thực tế.
+## Phạm vi và giới hạn đã biết
+
+- Đã có Customer, Contract, PriceList/PriceItem và luồng submit mô phỏng; submit thành công chỉ chuyển `Draft` sang `PendingApproval`.
+- `ServiceTerms` là giả định demo đại diện cho nội dung bắt buộc CTR-02; chưa có upload/lưu tệp.
+- Chưa có authentication/authorization (AC01), quy trình approval đầy đủ, audit actor, ký điện tử hoặc xử lý PRC-03/versioning.
+- Khởi tạo PostgreSQL, chạy migration, chạy API và demo với database thật cần được xác nhận trên máy nộp bài; bộ integration test tự động sử dụng SQLite.

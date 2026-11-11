@@ -44,6 +44,8 @@ public sealed record UpdateContractRequest
 
     [StringLength(4000)]
     public string? ServiceTerms { get; init; }
+
+    public string? Status { get; init; }
 }
 
 public sealed record ContractSubmissionResponse(
