@@ -23,7 +23,7 @@ flowchart LR
 - `src/QTKD.Api/Domain`: Customer, Contract, PriceList, PriceItem và ContractSubmission mô phỏng.
 - `src/QTKD.Api/Infrastructure`: EF Core `QtkdDbContext`, quan hệ, unique index và dữ liệu seed.
 - `src/QTKD.Api/Migrations`: lịch sử schema PostgreSQL; migration tuần 06 giữ migration `InitialCreate`.
-- `tests/QTKD.Api.Tests`: test controller và service trên SQLite tạm thời, không cần PostgreSQL.
+- `tests/QTKD.Api.Tests`: unit test quy tắc không dùng database, service test dùng SQLite, và integration test gọi API qua WebApplicationFactory với SQLite riêng.
 
 ## Luồng gửi Contract US03
 
@@ -31,7 +31,7 @@ flowchart LR
 2. `ContractsController` gọi `IContractCommandService`.
 3. Service kiểm tra Contract tồn tại và đang `Draft`; tiếp đó kiểm tra Customer `Active`, khoảng ngày hiệu lực và `ServiceTerms`.
 4. Nếu không đạt CTR-02, trả `400` cùng danh sách điều kiện thiếu; không thay đổi Contract và không tạo ContractSubmission.
-5. Nếu đạt, trong transaction service cập nhật trạng thái có điều kiện `Draft` → `PendingApproval` và lưu một ContractSubmission mô phỏng. Unique constraint theo Contract và Idempotency-Key chặn bản ghi trùng.
+5. Nếu đạt, trong transaction service cập nhật trạng thái có điều kiện `Draft` → `PendingApproval` và lưu một ContractSubmission mô phỏng. Mỗi Contract tối đa một submission và mỗi Idempotency-Key không-null chỉ dùng một lần
 6. API trả `200` với `approvalId` mô phỏng. Approval workflow, phân công người duyệt và audit actor chưa được xây dựng.
 
 ## Giới hạn có chủ ý
