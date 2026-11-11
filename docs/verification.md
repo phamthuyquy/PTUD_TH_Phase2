@@ -65,7 +65,7 @@ Bảng Pass/Fail, tên test tự động, trạng thái chạy thủ công và l
 - **Cách tái hiện:** gọi `CustomerService.CreateCustomerAsync` trực tiếp với `Name = ""`. Trước sửa, service dựa vào `[Required]` của API model validation; khi được gọi bên ngoài pipeline controller, request vẫn được lưu.
 - **Nguyên nhân:** `[ApiController]` kiểm tra validation cho HTTP request, nhưng service không tự đảm bảo trường tên bắt buộc.
 - **Sửa:** thêm `string.IsNullOrWhiteSpace(request.Name)` guard tại `CustomerService`, trả lỗi 400 `InvalidCustomer`; giữ test service TC02 và integration TC02 để kiểm tra hai đường gọi.
-- **Commit sửa lỗi:** `367fecc` — `test: complete phase 2 verification`.
+- **Commit sửa lỗi:** `f08e5d6` — `test: complete phase 2 verification`.
 
 Các lỗi fixture cũng được xử lý trong lúc hoàn thiện test: tạo PriceList khi chưa có Contract; ID/số hợp đồng test trùng seed; test controller thay provider nhưng vẫn giữ cấu hình PostgreSQL; và dữ liệu theo dõi `ExecuteUpdate` không được reload trước khi assert.
 
