@@ -5,6 +5,9 @@
 *.user
 *.suo
 TestResults/
+!tests/QTKD.Api.Tests/TestResults/
+tests/QTKD.Api.Tests/TestResults/*
+!tests/QTKD.Api.Tests/TestResults/week07-tests.trx
 .env
 .env.*
 !.env.example

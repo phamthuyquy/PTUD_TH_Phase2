@@ -6,7 +6,7 @@ using QTKD.Api.Infrastructure;
 
 namespace QTKD.Api.Tests
 {
-    [Trait("Category", "Unit")]
+    [Trait("Category", "Service")]
     public class ContractCommandServiceTests: IDisposable
     {
         private readonly SqliteConnection _connection;

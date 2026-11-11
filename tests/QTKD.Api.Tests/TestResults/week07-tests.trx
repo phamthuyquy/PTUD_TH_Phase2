@@ -1,0 +1,816 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TestRun id="935cb724-0bd1-4ff3-a4f7-27d4bb9c4dd4" name="QUY@LAPTOP-H2GONO1I 2026-11-11 19:26:08" runUser="LAPTOP-H2GONO1I\QUY" xmlns="http://microsoft.com/schemas/VisualStudio/TeamTest/2010">
+  <Times creation="2026-11-11T19:26:08.7521329+07:00" queuing="2026-11-11T19:26:08.7521336+07:00" start="2026-11-11T19:26:07.6016080+07:00" finish="2026-11-11T19:26:10.5991544+07:00" />
+  <TestSettings name="default" id="17634b24-2990-4e52-ae8d-7aaddab876a5">
+    <Deployment runDeploymentRoot="QUY_LAPTOP-H2GONO1I_2026-11-11_19_26_08" />
+  </TestSettings>
+  <Results>
+    <UnitTestResult executionId="ca63a681-74bc-4b38-9cd6-e0276d1f7de6" testId="613d17d4-96ac-928a-7d10-8cae67007a9d" testName="QTKD.Api.Tests.CustomersControllerTests.CreateCustomer_MissingRequiredName_IsRejectedWithValidationError_TC02" computerName="LAPTOP-H2GONO1I" duration="00:00:01.3334280" startTime="2026-11-11T19:26:08.5731295+07:00" endTime="2026-11-11T19:26:09.9129682+07:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="ca63a681-74bc-4b38-9cd6-e0276d1f7de6" />
+    <UnitTestResult executionId="4f88e962-cd8a-470e-abad-1ae8214630b3" testId="f50fec96-97f8-a623-e495-9a6ef776f660" testName="QTKD.Api.Tests.ContractBusinessRulesTests.CanEdit_ReturnsTrueForEditableStatuses(status: &quot;Draft&quot;)" computerName="LAPTOP-H2GONO1I" duration="00:00:00.0001654" startTime="2026-11-11T19:26:08.6580492+07:00" endTime="2026-11-11T19:26:08.6581055+07:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="4f88e962-cd8a-470e-abad-1ae8214630b3" />
+    <UnitTestResult executionId="b6973da3-8272-4008-bc41-c3edd90eca98" testId="7c010d34-334b-2682-846c-4260833ce961" testName="QTKD.Api.Tests.ContractCommandServiceTests.SubmitContract_WhenMissingCustomerOrInvalidDates_ShouldFail_CTR02_TC05" computerName="LAPTOP-H2GONO1I" duration="00:00:00.2505657" startTime="2026-11-11T19:26:09.8415986+07:00" endTime="2026-11-11T19:26:10.0890753+07:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="b6973da3-8272-4008-bc41-c3edd90eca98" />
+    <UnitTestResult executionId="1c5557b2-09b1-4f7b-8f11-adc58f4d54d0" testId="2cf30712-6cc9-993b-98ed-411a1916b6c1" testName="QTKD.Api.Tests.ContractBusinessRulesTests.CanSetStatusDirectly_RejectsRequestedStatus" computerName="LAPTOP-H2GONO1I" duration="00:00:00.0001628" startTime="2026-11-11T19:26:08.6577001+07:00" endTime="2026-11-11T19:26:08.6577552+07:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="1c5557b2-09b1-4f7b-8f11-adc58f4d54d0" />
+    <UnitTestResult executionId="4f4e7ff4-6e90-4e34-9997-a05319384dd1" testId="4b4eec79-854d-1baf-5ba6-242cf053e3ce" testName="QTKD.Api.Tests.ContractCommandServiceTests.UpdateContract_WhenStatusIsProvided_ShouldRejectDirectTransition_TC07" computerName="LAPTOP-H2GONO1I" duration="00:00:01.2636305" startTime="2026-11-11T19:26:08.5730526+07:00" endTime="2026-11-11T19:26:09.8389956+07:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="4f4e7ff4-6e90-4e34-9997-a05319384dd1" />
+    <UnitTestResult executionId="1ed853d3-bcc4-4a8d-b3fb-ad429907b42c" testId="3c24c451-d359-72db-cca8-9e6f2be215a4" testName="QTKD.Api.Tests.ContractCommandServiceTests.SubmitContract_WhenValid_ShouldChangeStatusToPendingApproval_CTR03_TC06" computerName="LAPTOP-H2GONO1I" duration="00:00:00.0509103" startTime="2026-11-11T19:26:10.3099275+07:00" endTime="2026-11-11T19:26:10.3607300+07:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="1ed853d3-bcc4-4a8d-b3fb-ad429907b42c" />
+    <UnitTestResult executionId="9152b9c4-d44c-4853-9596-1a21e84bacb6" testId="db202796-5290-2c4f-fc45-716aff0401cc" testName="QTKD.Api.Tests.ContractsControllerTests.SubmitContract_InvalidId_ReturnsNotFoundProblem" computerName="LAPTOP-H2GONO1I" duration="00:00:01.5434083" startTime="2026-11-11T19:26:08.5709319+07:00" endTime="2026-11-11T19:26:10.1280165+07:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="9152b9c4-d44c-4853-9596-1a21e84bacb6" />
+    <UnitTestResult executionId="80549ad9-6c72-4e57-857e-0f07229d18ae" testId="f97725a9-0cb1-24ec-03e6-b86e4d199988" testName="QTKD.Api.Tests.ContractBusinessRulesTests.GetStatusAfterSubmission_ReturnsPendingApproval" computerName="LAPTOP-H2GONO1I" duration="00:00:00.0020361" startTime="2026-11-11T19:26:08.6072122+07:00" endTime="2026-11-11T19:26:08.6073222+07:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="80549ad9-6c72-4e57-857e-0f07229d18ae" />
+    <UnitTestResult executionId="63c65196-4805-4b6e-91ee-b8bd5d8d970e" testId="8249462e-dfe4-a79d-6529-cbf9d865e87f" testName="QTKD.Api.Tests.CustomerServiceTests.CreateCustomer_WithValidData_ShouldSucceed_TC01" computerName="LAPTOP-H2GONO1I" duration="00:00:00.0689051" startTime="2026-11-11T19:26:09.6185694+07:00" endTime="2026-11-11T19:26:09.6877623+07:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="63c65196-4805-4b6e-91ee-b8bd5d8d970e" />
+    <UnitTestResult executionId="d4582b40-b693-4845-8a0e-62939ab1a7ca" testId="fc91d25a-b100-7ab3-9ccf-eaa3e71ca854" testName="QTKD.Api.Tests.ContractBusinessRulesTests.GetFailedSubmissionConditions_ReturnsNoErrorsForValidContract" computerName="LAPTOP-H2GONO1I" duration="00:00:00.0016930" startTime="2026-11-11T19:26:08.6574919+07:00" endTime="2026-11-11T19:26:08.6575576+07:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="d4582b40-b693-4845-8a0e-62939ab1a7ca" />
+    <UnitTestResult executionId="c9b98436-048d-4114-81af-e20f4b39dc9e" testId="07c7de37-a193-f435-6dfe-3c44afc13713" testName="QTKD.Api.Tests.ContractCommandServiceTests.UpdateContract_WhenStatusIsDraft_ShouldSucceed_TC03" computerName="LAPTOP-H2GONO1I" duration="00:00:00.2197069" startTime="2026-11-11T19:26:10.0893385+07:00" endTime="2026-11-11T19:26:10.3096761+07:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="c9b98436-048d-4114-81af-e20f4b39dc9e" />
+    <UnitTestResult executionId="d0698421-c60d-4998-86c7-41451886b32d" testId="83ec482b-f337-74ed-9268-ffc6db11b4ad" testName="QTKD.Api.Tests.ContractBusinessRulesTests.GetFailedSubmissionConditions_ReturnsErrorForInvalidRequirements(customerIsValid: True, startOffset: 0, endOffset: -1, serviceTerms: &quot;Port service terms&quot;, expectedError: &quot;Contract effective dates must be ordered and not e&quot;···)" computerName="LAPTOP-H2GONO1I" duration="00:00:00.0000145" startTime="2026-11-11T19:26:08.6572436+07:00" endTime="2026-11-11T19:26:08.6573087+07:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="d0698421-c60d-4998-86c7-41451886b32d" />
+    <UnitTestResult executionId="28f64239-daf9-48e4-88b1-8a215cadcc76" testId="a32b6291-6c7e-83a3-7b4b-3ac7a31b9d4d" testName="QTKD.Api.Tests.ContractBusinessRulesTests.CanEdit_ReturnsTrueForEditableStatuses(status: &quot;Revision Requested&quot;)" computerName="LAPTOP-H2GONO1I" duration="00:00:00.0000836" startTime="2026-11-11T19:26:08.6578859+07:00" endTime="2026-11-11T19:26:08.6579399+07:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="28f64239-daf9-48e4-88b1-8a215cadcc76" />
+    <UnitTestResult executionId="49cd65ae-d13a-4b09-96b6-5db8f8a1eebf" testId="82805b18-beb2-4ca6-7486-a0124e920597" testName="QTKD.Api.Tests.ContractsControllerTests.ContractWorkflow_CreatesSubmitsReadsStateAndPreventsDuplicates_TC03_TC04_TC05_TC06_TC07_TC08" computerName="LAPTOP-H2GONO1I" duration="00:00:00.3218172" startTime="2026-11-11T19:26:10.1282558+07:00" endTime="2026-11-11T19:26:10.4504152+07:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="49cd65ae-d13a-4b09-96b6-5db8f8a1eebf" />
+    <UnitTestResult executionId="4c36d8c1-dcf8-446c-ac57-b5f4b93aac48" testId="c6437b2f-173e-ee38-8039-2341c2730d58" testName="QTKD.Api.Tests.ContractCommandServiceTests.UpdateContract_WhenStatusIsPendingApproval_ShouldFail_CTR01_TC04" computerName="LAPTOP-H2GONO1I" duration="00:00:00.0105037" startTime="2026-11-11T19:26:10.3609564+07:00" endTime="2026-11-11T19:26:10.3713226+07:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="4c36d8c1-dcf8-446c-ac57-b5f4b93aac48" />
+    <UnitTestResult executionId="ed106fd5-c83e-4b72-9495-f9474aa2b3d8" testId="c53b41f5-cd4b-b53b-24a8-b07cfb45e3a8" testName="QTKD.Api.Tests.ContractBusinessRulesTests.GetFailedSubmissionConditions_ReturnsErrorForInvalidRequirements(customerIsValid: False, startOffset: 0, endOffset: 1, serviceTerms: &quot;Port service terms&quot;, expectedError: &quot;Customer must exist and have Active status.&quot;)" computerName="LAPTOP-H2GONO1I" duration="00:00:00.0051090" startTime="2026-11-11T19:26:08.6085656+07:00" endTime="2026-11-11T19:26:08.6086221+07:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="ed106fd5-c83e-4b72-9495-f9474aa2b3d8" />
+    <UnitTestResult executionId="4d0dd6b2-f4b3-4199-9b9a-d006ec4b9c9d" testId="106f0b8c-acf2-f192-24ed-3fe93a2d2f05" testName="QTKD.Api.Tests.PricingServiceTests.CreatePriceList_WithValidData_ShouldSucceed" computerName="LAPTOP-H2GONO1I" duration="00:00:01.1380463" startTime="2026-11-11T19:26:08.5731603+07:00" endTime="2026-11-11T19:26:09.7157797+07:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="4d0dd6b2-f4b3-4199-9b9a-d006ec4b9c9d" />
+    <UnitTestResult executionId="c95bb6b6-a0ce-4735-98b9-1d5527c25fa8" testId="12014a47-6a21-a68e-1ec6-979a7337352c" testName="QTKD.Api.Tests.ContractBusinessRulesTests.CanSubmit_AllowsDraftAndRejectsOtherStatuses" computerName="LAPTOP-H2GONO1I" duration="00:00:00.0084252" startTime="2026-11-11T19:26:08.5731445+07:00" endTime="2026-11-11T19:26:08.5904005+07:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="c95bb6b6-a0ce-4735-98b9-1d5527c25fa8" />
+    <UnitTestResult executionId="e1481d48-79a1-4e9b-986b-c366bd1491ff" testId="a61a8a66-18a9-82f1-64a9-cc465a694261" testName="QTKD.Api.Tests.ContractBusinessRulesTests.CanEdit_ReturnsFalseForPendingApproval" computerName="LAPTOP-H2GONO1I" duration="00:00:00.0002167" startTime="2026-11-11T19:26:08.6083205+07:00" endTime="2026-11-11T19:26:08.6083852+07:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="e1481d48-79a1-4e9b-986b-c366bd1491ff" />
+    <UnitTestResult executionId="01105365-92cf-405e-b92d-6fedc20e1728" testId="bd9a63cc-b392-e950-c139-fb154c4dd6b4" testName="QTKD.Api.Tests.CustomersControllerTests.CreateCustomer_ValidPayload_CreatesAndCanBeReadBack_TC01" computerName="LAPTOP-H2GONO1I" duration="00:00:00.2788826" startTime="2026-11-11T19:26:09.9142186+07:00" endTime="2026-11-11T19:26:10.1934620+07:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="01105365-92cf-405e-b92d-6fedc20e1728" />
+    <UnitTestResult executionId="917037bc-6596-4497-a908-65e0b80fc2e2" testId="22aa0b16-4922-70e3-bbe8-d8c4e4298172" testName="QTKD.Api.Tests.ContractBusinessRulesTests.GetFailedSubmissionConditions_ReturnsErrorForInvalidRequirements(customerIsValid: True, startOffset: 0, endOffset: 1, serviceTerms: &quot; &quot;, expectedError: &quot;At least one required content item must be provide&quot;···)" computerName="LAPTOP-H2GONO1I" duration="00:00:00.0004508" startTime="2026-11-11T19:26:08.6566245+07:00" endTime="2026-11-11T19:26:08.6567521+07:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="917037bc-6596-4497-a908-65e0b80fc2e2" />
+    <UnitTestResult executionId="7693c658-b1a0-42d9-afc4-0c65b179cb2a" testId="38c09559-56e1-2514-d78e-387accce2afb" testName="QTKD.Api.Tests.CustomerServiceTests.CreateCustomer_WithoutName_ShouldFail_TC02" computerName="LAPTOP-H2GONO1I" duration="00:00:01.0405035" startTime="2026-11-11T19:26:08.5731091+07:00" endTime="2026-11-11T19:26:09.6183167+07:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="7693c658-b1a0-42d9-afc4-0c65b179cb2a" />
+  </Results>
+  <TestDefinitions>
+    <UnitTest name="QTKD.Api.Tests.ContractCommandServiceTests.UpdateContract_WhenStatusIsPendingApproval_ShouldFail_CTR01_TC04" storage="d:\ptud_httt_hd\th\phần 2\ptud_th_phase2\tests\qtkd.api.tests\bin\debug\net10.0\qtkd.api.tests.dll" id="c6437b2f-173e-ee38-8039-2341c2730d58">
+      <Execution id="4c36d8c1-dcf8-446c-ac57-b5f4b93aac48" />
+      <TestMethod codeBase="D:\PTUD_HTTT_HD\TH\phần 2\PTUD_TH_Phase2\tests\QTKD.Api.Tests\bin\Debug\net10.0\QTKD.Api.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="QTKD.Api.Tests.ContractCommandServiceTests" name="UpdateContract_WhenStatusIsPendingApproval_ShouldFail_CTR01_TC04" />
+    </UnitTest>
+    <UnitTest name="QTKD.Api.Tests.ContractBusinessRulesTests.GetFailedSubmissionConditions_ReturnsErrorForInvalidRequirements(customerIsValid: True, startOffset: 0, endOffset: 1, serviceTerms: &quot; &quot;, expectedError: &quot;At least one required content item must be provide&quot;···)" storage="d:\ptud_httt_hd\th\phần 2\ptud_th_phase2\tests\qtkd.api.tests\bin\debug\net10.0\qtkd.api.tests.dll" id="22aa0b16-4922-70e3-bbe8-d8c4e4298172">
+      <Execution id="917037bc-6596-4497-a908-65e0b80fc2e2" />
+      <TestMethod codeBase="D:\PTUD_HTTT_HD\TH\phần 2\PTUD_TH_Phase2\tests\QTKD.Api.Tests\bin\Debug\net10.0\QTKD.Api.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="QTKD.Api.Tests.ContractBusinessRulesTests" name="GetFailedSubmissionConditions_ReturnsErrorForInvalidRequirements" />
+    </UnitTest>
+    <UnitTest name="QTKD.Api.Tests.ContractBusinessRulesTests.CanEdit_ReturnsFalseForPendingApproval" storage="d:\ptud_httt_hd\th\phần 2\ptud_th_phase2\tests\qtkd.api.tests\bin\debug\net10.0\qtkd.api.tests.dll" id="a61a8a66-18a9-82f1-64a9-cc465a694261">
+      <Execution id="e1481d48-79a1-4e9b-986b-c366bd1491ff" />
+      <TestMethod codeBase="D:\PTUD_HTTT_HD\TH\phần 2\PTUD_TH_Phase2\tests\QTKD.Api.Tests\bin\Debug\net10.0\QTKD.Api.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="QTKD.Api.Tests.ContractBusinessRulesTests" name="CanEdit_ReturnsFalseForPendingApproval" />
+    </UnitTest>
+    <UnitTest name="QTKD.Api.Tests.ContractBusinessRulesTests.GetStatusAfterSubmission_ReturnsPendingApproval" storage="d:\ptud_httt_hd\th\phần 2\ptud_th_phase2\tests\qtkd.api.tests\bin\debug\net10.0\qtkd.api.tests.dll" id="f97725a9-0cb1-24ec-03e6-b86e4d199988">
+      <Execution id="80549ad9-6c72-4e57-857e-0f07229d18ae" />
+      <TestMethod codeBase="D:\PTUD_HTTT_HD\TH\phần 2\PTUD_TH_Phase2\tests\QTKD.Api.Tests\bin\Debug\net10.0\QTKD.Api.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="QTKD.Api.Tests.ContractBusinessRulesTests" name="GetStatusAfterSubmission_ReturnsPendingApproval" />
+    </UnitTest>
+    <UnitTest name="QTKD.Api.Tests.ContractCommandServiceTests.UpdateContract_WhenStatusIsDraft_ShouldSucceed_TC03" storage="d:\ptud_httt_hd\th\phần 2\ptud_th_phase2\tests\qtkd.api.tests\bin\debug\net10.0\qtkd.api.tests.dll" id="07c7de37-a193-f435-6dfe-3c44afc13713">
+      <Execution id="c9b98436-048d-4114-81af-e20f4b39dc9e" />
+      <TestMethod codeBase="D:\PTUD_HTTT_HD\TH\phần 2\PTUD_TH_Phase2\tests\QTKD.Api.Tests\bin\Debug\net10.0\QTKD.Api.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="QTKD.Api.Tests.ContractCommandServiceTests" name="UpdateContract_WhenStatusIsDraft_ShouldSucceed_TC03" />
+    </UnitTest>
+    <UnitTest name="QTKD.Api.Tests.PricingServiceTests.CreatePriceList_WithValidData_ShouldSucceed" storage="d:\ptud_httt_hd\th\phần 2\ptud_th_phase2\tests\qtkd.api.tests\bin\debug\net10.0\qtkd.api.tests.dll" id="106f0b8c-acf2-f192-24ed-3fe93a2d2f05">
+      <Execution id="4d0dd6b2-f4b3-4199-9b9a-d006ec4b9c9d" />
+      <TestMethod codeBase="D:\PTUD_HTTT_HD\TH\phần 2\PTUD_TH_Phase2\tests\QTKD.Api.Tests\bin\Debug\net10.0\QTKD.Api.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="QTKD.Api.Tests.PricingServiceTests" name="CreatePriceList_WithValidData_ShouldSucceed" />
+    </UnitTest>
+    <UnitTest name="QTKD.Api.Tests.CustomerServiceTests.CreateCustomer_WithValidData_ShouldSucceed_TC01" storage="d:\ptud_httt_hd\th\phần 2\ptud_th_phase2\tests\qtkd.api.tests\bin\debug\net10.0\qtkd.api.tests.dll" id="8249462e-dfe4-a79d-6529-cbf9d865e87f">
+      <Execution id="63c65196-4805-4b6e-91ee-b8bd5d8d970e" />
+      <TestMethod codeBase="D:\PTUD_HTTT_HD\TH\phần 2\PTUD_TH_Phase2\tests\QTKD.Api.Tests\bin\Debug\net10.0\QTKD.Api.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="QTKD.Api.Tests.CustomerServiceTests" name="CreateCustomer_WithValidData_ShouldSucceed_TC01" />
+    </UnitTest>
+    <UnitTest name="QTKD.Api.Tests.CustomersControllerTests.CreateCustomer_ValidPayload_CreatesAndCanBeReadBack_TC01" storage="d:\ptud_httt_hd\th\phần 2\ptud_th_phase2\tests\qtkd.api.tests\bin\debug\net10.0\qtkd.api.tests.dll" id="bd9a63cc-b392-e950-c139-fb154c4dd6b4">
+      <Execution id="01105365-92cf-405e-b92d-6fedc20e1728" />
+      <TestMethod codeBase="D:\PTUD_HTTT_HD\TH\phần 2\PTUD_TH_Phase2\tests\QTKD.Api.Tests\bin\Debug\net10.0\QTKD.Api.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="QTKD.Api.Tests.CustomersControllerTests" name="CreateCustomer_ValidPayload_CreatesAndCanBeReadBack_TC01" />
+    </UnitTest>
+    <UnitTest name="QTKD.Api.Tests.ContractCommandServiceTests.UpdateContract_WhenStatusIsProvided_ShouldRejectDirectTransition_TC07" storage="d:\ptud_httt_hd\th\phần 2\ptud_th_phase2\tests\qtkd.api.tests\bin\debug\net10.0\qtkd.api.tests.dll" id="4b4eec79-854d-1baf-5ba6-242cf053e3ce">
+      <Execution id="4f4e7ff4-6e90-4e34-9997-a05319384dd1" />
+      <TestMethod codeBase="D:\PTUD_HTTT_HD\TH\phần 2\PTUD_TH_Phase2\tests\QTKD.Api.Tests\bin\Debug\net10.0\QTKD.Api.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="QTKD.Api.Tests.ContractCommandServiceTests" name="UpdateContract_WhenStatusIsProvided_ShouldRejectDirectTransition_TC07" />
+    </UnitTest>
+    <UnitTest name="QTKD.Api.Tests.CustomersControllerTests.CreateCustomer_MissingRequiredName_IsRejectedWithValidationError_TC02" storage="d:\ptud_httt_hd\th\phần 2\ptud_th_phase2\tests\qtkd.api.tests\bin\debug\net10.0\qtkd.api.tests.dll" id="613d17d4-96ac-928a-7d10-8cae67007a9d">
+      <Execution id="ca63a681-74bc-4b38-9cd6-e0276d1f7de6" />
+      <TestMethod codeBase="D:\PTUD_HTTT_HD\TH\phần 2\PTUD_TH_Phase2\tests\QTKD.Api.Tests\bin\Debug\net10.0\QTKD.Api.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="QTKD.Api.Tests.CustomersControllerTests" name="CreateCustomer_MissingRequiredName_IsRejectedWithValidationError_TC02" />
+    </UnitTest>
+    <UnitTest name="QTKD.Api.Tests.ContractBusinessRulesTests.GetFailedSubmissionConditions_ReturnsNoErrorsForValidContract" storage="d:\ptud_httt_hd\th\phần 2\ptud_th_phase2\tests\qtkd.api.tests\bin\debug\net10.0\qtkd.api.tests.dll" id="fc91d25a-b100-7ab3-9ccf-eaa3e71ca854">
+      <Execution id="d4582b40-b693-4845-8a0e-62939ab1a7ca" />
+      <TestMethod codeBase="D:\PTUD_HTTT_HD\TH\phần 2\PTUD_TH_Phase2\tests\QTKD.Api.Tests\bin\Debug\net10.0\QTKD.Api.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="QTKD.Api.Tests.ContractBusinessRulesTests" name="GetFailedSubmissionConditions_ReturnsNoErrorsForValidContract" />
+    </UnitTest>
+    <UnitTest name="QTKD.Api.Tests.ContractCommandServiceTests.SubmitContract_WhenMissingCustomerOrInvalidDates_ShouldFail_CTR02_TC05" storage="d:\ptud_httt_hd\th\phần 2\ptud_th_phase2\tests\qtkd.api.tests\bin\debug\net10.0\qtkd.api.tests.dll" id="7c010d34-334b-2682-846c-4260833ce961">
+      <Execution id="b6973da3-8272-4008-bc41-c3edd90eca98" />
+      <TestMethod codeBase="D:\PTUD_HTTT_HD\TH\phần 2\PTUD_TH_Phase2\tests\QTKD.Api.Tests\bin\Debug\net10.0\QTKD.Api.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="QTKD.Api.Tests.ContractCommandServiceTests" name="SubmitContract_WhenMissingCustomerOrInvalidDates_ShouldFail_CTR02_TC05" />
+    </UnitTest>
+    <UnitTest name="QTKD.Api.Tests.ContractsControllerTests.ContractWorkflow_CreatesSubmitsReadsStateAndPreventsDuplicates_TC03_TC04_TC05_TC06_TC07_TC08" storage="d:\ptud_httt_hd\th\phần 2\ptud_th_phase2\tests\qtkd.api.tests\bin\debug\net10.0\qtkd.api.tests.dll" id="82805b18-beb2-4ca6-7486-a0124e920597">
+      <Execution id="49cd65ae-d13a-4b09-96b6-5db8f8a1eebf" />
+      <TestMethod codeBase="D:\PTUD_HTTT_HD\TH\phần 2\PTUD_TH_Phase2\tests\QTKD.Api.Tests\bin\Debug\net10.0\QTKD.Api.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="QTKD.Api.Tests.ContractsControllerTests" name="ContractWorkflow_CreatesSubmitsReadsStateAndPreventsDuplicates_TC03_TC04_TC05_TC06_TC07_TC08" />
+    </UnitTest>
+    <UnitTest name="QTKD.Api.Tests.ContractBusinessRulesTests.GetFailedSubmissionConditions_ReturnsErrorForInvalidRequirements(customerIsValid: False, startOffset: 0, endOffset: 1, serviceTerms: &quot;Port service terms&quot;, expectedError: &quot;Customer must exist and have Active status.&quot;)" storage="d:\ptud_httt_hd\th\phần 2\ptud_th_phase2\tests\qtkd.api.tests\bin\debug\net10.0\qtkd.api.tests.dll" id="c53b41f5-cd4b-b53b-24a8-b07cfb45e3a8">
+      <Execution id="ed106fd5-c83e-4b72-9495-f9474aa2b3d8" />
+      <TestMethod codeBase="D:\PTUD_HTTT_HD\TH\phần 2\PTUD_TH_Phase2\tests\QTKD.Api.Tests\bin\Debug\net10.0\QTKD.Api.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="QTKD.Api.Tests.ContractBusinessRulesTests" name="GetFailedSubmissionConditions_ReturnsErrorForInvalidRequirements" />
+    </UnitTest>
+    <UnitTest name="QTKD.Api.Tests.ContractsControllerTests.SubmitContract_InvalidId_ReturnsNotFoundProblem" storage="d:\ptud_httt_hd\th\phần 2\ptud_th_phase2\tests\qtkd.api.tests\bin\debug\net10.0\qtkd.api.tests.dll" id="db202796-5290-2c4f-fc45-716aff0401cc">
+      <Execution id="9152b9c4-d44c-4853-9596-1a21e84bacb6" />
+      <TestMethod codeBase="D:\PTUD_HTTT_HD\TH\phần 2\PTUD_TH_Phase2\tests\QTKD.Api.Tests\bin\Debug\net10.0\QTKD.Api.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="QTKD.Api.Tests.ContractsControllerTests" name="SubmitContract_InvalidId_ReturnsNotFoundProblem" />
+    </UnitTest>
+    <UnitTest name="QTKD.Api.Tests.ContractBusinessRulesTests.CanEdit_ReturnsTrueForEditableStatuses(status: &quot;Revision Requested&quot;)" storage="d:\ptud_httt_hd\th\phần 2\ptud_th_phase2\tests\qtkd.api.tests\bin\debug\net10.0\qtkd.api.tests.dll" id="a32b6291-6c7e-83a3-7b4b-3ac7a31b9d4d">
+      <Execution id="28f64239-daf9-48e4-88b1-8a215cadcc76" />
+      <TestMethod codeBase="D:\PTUD_HTTT_HD\TH\phần 2\PTUD_TH_Phase2\tests\QTKD.Api.Tests\bin\Debug\net10.0\QTKD.Api.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="QTKD.Api.Tests.ContractBusinessRulesTests" name="CanEdit_ReturnsTrueForEditableStatuses" />
+    </UnitTest>
+    <UnitTest name="QTKD.Api.Tests.ContractBusinessRulesTests.CanSubmit_AllowsDraftAndRejectsOtherStatuses" storage="d:\ptud_httt_hd\th\phần 2\ptud_th_phase2\tests\qtkd.api.tests\bin\debug\net10.0\qtkd.api.tests.dll" id="12014a47-6a21-a68e-1ec6-979a7337352c">
+      <Execution id="c95bb6b6-a0ce-4735-98b9-1d5527c25fa8" />
+      <TestMethod codeBase="D:\PTUD_HTTT_HD\TH\phần 2\PTUD_TH_Phase2\tests\QTKD.Api.Tests\bin\Debug\net10.0\QTKD.Api.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="QTKD.Api.Tests.ContractBusinessRulesTests" name="CanSubmit_AllowsDraftAndRejectsOtherStatuses" />
+    </UnitTest>
+    <UnitTest name="QTKD.Api.Tests.ContractBusinessRulesTests.GetFailedSubmissionConditions_ReturnsErrorForInvalidRequirements(customerIsValid: True, startOffset: 0, endOffset: -1, serviceTerms: &quot;Port service terms&quot;, expectedError: &quot;Contract effective dates must be ordered and not e&quot;···)" storage="d:\ptud_httt_hd\th\phần 2\ptud_th_phase2\tests\qtkd.api.tests\bin\debug\net10.0\qtkd.api.tests.dll" id="83ec482b-f337-74ed-9268-ffc6db11b4ad">
+      <Execution id="d0698421-c60d-4998-86c7-41451886b32d" />
+      <TestMethod codeBase="D:\PTUD_HTTT_HD\TH\phần 2\PTUD_TH_Phase2\tests\QTKD.Api.Tests\bin\Debug\net10.0\QTKD.Api.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="QTKD.Api.Tests.ContractBusinessRulesTests" name="GetFailedSubmissionConditions_ReturnsErrorForInvalidRequirements" />
+    </UnitTest>
+    <UnitTest name="QTKD.Api.Tests.ContractBusinessRulesTests.CanSetStatusDirectly_RejectsRequestedStatus" storage="d:\ptud_httt_hd\th\phần 2\ptud_th_phase2\tests\qtkd.api.tests\bin\debug\net10.0\qtkd.api.tests.dll" id="2cf30712-6cc9-993b-98ed-411a1916b6c1">
+      <Execution id="1c5557b2-09b1-4f7b-8f11-adc58f4d54d0" />
+      <TestMethod codeBase="D:\PTUD_HTTT_HD\TH\phần 2\PTUD_TH_Phase2\tests\QTKD.Api.Tests\bin\Debug\net10.0\QTKD.Api.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="QTKD.Api.Tests.ContractBusinessRulesTests" name="CanSetStatusDirectly_RejectsRequestedStatus" />
+    </UnitTest>
+    <UnitTest name="QTKD.Api.Tests.ContractBusinessRulesTests.CanEdit_ReturnsTrueForEditableStatuses(status: &quot;Draft&quot;)" storage="d:\ptud_httt_hd\th\phần 2\ptud_th_phase2\tests\qtkd.api.tests\bin\debug\net10.0\qtkd.api.tests.dll" id="f50fec96-97f8-a623-e495-9a6ef776f660">
+      <Execution id="4f88e962-cd8a-470e-abad-1ae8214630b3" />
+      <TestMethod codeBase="D:\PTUD_HTTT_HD\TH\phần 2\PTUD_TH_Phase2\tests\QTKD.Api.Tests\bin\Debug\net10.0\QTKD.Api.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="QTKD.Api.Tests.ContractBusinessRulesTests" name="CanEdit_ReturnsTrueForEditableStatuses" />
+    </UnitTest>
+    <UnitTest name="QTKD.Api.Tests.CustomerServiceTests.CreateCustomer_WithoutName_ShouldFail_TC02" storage="d:\ptud_httt_hd\th\phần 2\ptud_th_phase2\tests\qtkd.api.tests\bin\debug\net10.0\qtkd.api.tests.dll" id="38c09559-56e1-2514-d78e-387accce2afb">
+      <Execution id="7693c658-b1a0-42d9-afc4-0c65b179cb2a" />
+      <TestMethod codeBase="D:\PTUD_HTTT_HD\TH\phần 2\PTUD_TH_Phase2\tests\QTKD.Api.Tests\bin\Debug\net10.0\QTKD.Api.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="QTKD.Api.Tests.CustomerServiceTests" name="CreateCustomer_WithoutName_ShouldFail_TC02" />
+    </UnitTest>
+    <UnitTest name="QTKD.Api.Tests.ContractCommandServiceTests.SubmitContract_WhenValid_ShouldChangeStatusToPendingApproval_CTR03_TC06" storage="d:\ptud_httt_hd\th\phần 2\ptud_th_phase2\tests\qtkd.api.tests\bin\debug\net10.0\qtkd.api.tests.dll" id="3c24c451-d359-72db-cca8-9e6f2be215a4">
+      <Execution id="1ed853d3-bcc4-4a8d-b3fb-ad429907b42c" />
+      <TestMethod codeBase="D:\PTUD_HTTT_HD\TH\phần 2\PTUD_TH_Phase2\tests\QTKD.Api.Tests\bin\Debug\net10.0\QTKD.Api.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="QTKD.Api.Tests.ContractCommandServiceTests" name="SubmitContract_WhenValid_ShouldChangeStatusToPendingApproval_CTR03_TC06" />
+    </UnitTest>
+  </TestDefinitions>
+  <TestEntries>
+    <TestEntry testId="613d17d4-96ac-928a-7d10-8cae67007a9d" executionId="ca63a681-74bc-4b38-9cd6-e0276d1f7de6" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="f50fec96-97f8-a623-e495-9a6ef776f660" executionId="4f88e962-cd8a-470e-abad-1ae8214630b3" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="7c010d34-334b-2682-846c-4260833ce961" executionId="b6973da3-8272-4008-bc41-c3edd90eca98" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="2cf30712-6cc9-993b-98ed-411a1916b6c1" executionId="1c5557b2-09b1-4f7b-8f11-adc58f4d54d0" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="4b4eec79-854d-1baf-5ba6-242cf053e3ce" executionId="4f4e7ff4-6e90-4e34-9997-a05319384dd1" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="3c24c451-d359-72db-cca8-9e6f2be215a4" executionId="1ed853d3-bcc4-4a8d-b3fb-ad429907b42c" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="db202796-5290-2c4f-fc45-716aff0401cc" executionId="9152b9c4-d44c-4853-9596-1a21e84bacb6" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="f97725a9-0cb1-24ec-03e6-b86e4d199988" executionId="80549ad9-6c72-4e57-857e-0f07229d18ae" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="8249462e-dfe4-a79d-6529-cbf9d865e87f" executionId="63c65196-4805-4b6e-91ee-b8bd5d8d970e" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="fc91d25a-b100-7ab3-9ccf-eaa3e71ca854" executionId="d4582b40-b693-4845-8a0e-62939ab1a7ca" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="07c7de37-a193-f435-6dfe-3c44afc13713" executionId="c9b98436-048d-4114-81af-e20f4b39dc9e" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="83ec482b-f337-74ed-9268-ffc6db11b4ad" executionId="d0698421-c60d-4998-86c7-41451886b32d" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="a32b6291-6c7e-83a3-7b4b-3ac7a31b9d4d" executionId="28f64239-daf9-48e4-88b1-8a215cadcc76" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="82805b18-beb2-4ca6-7486-a0124e920597" executionId="49cd65ae-d13a-4b09-96b6-5db8f8a1eebf" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="c6437b2f-173e-ee38-8039-2341c2730d58" executionId="4c36d8c1-dcf8-446c-ac57-b5f4b93aac48" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="c53b41f5-cd4b-b53b-24a8-b07cfb45e3a8" executionId="ed106fd5-c83e-4b72-9495-f9474aa2b3d8" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="106f0b8c-acf2-f192-24ed-3fe93a2d2f05" executionId="4d0dd6b2-f4b3-4199-9b9a-d006ec4b9c9d" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="12014a47-6a21-a68e-1ec6-979a7337352c" executionId="c95bb6b6-a0ce-4735-98b9-1d5527c25fa8" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="a61a8a66-18a9-82f1-64a9-cc465a694261" executionId="e1481d48-79a1-4e9b-986b-c366bd1491ff" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="bd9a63cc-b392-e950-c139-fb154c4dd6b4" executionId="01105365-92cf-405e-b92d-6fedc20e1728" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="22aa0b16-4922-70e3-bbe8-d8c4e4298172" executionId="917037bc-6596-4497-a908-65e0b80fc2e2" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="38c09559-56e1-2514-d78e-387accce2afb" executionId="7693c658-b1a0-42d9-afc4-0c65b179cb2a" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+  </TestEntries>
+  <TestLists>
+    <TestList name="Results Not in a List" id="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestList name="All Loaded Results" id="19431567-8539-422a-85d7-44ee4e166bda" />
+  </TestLists>
+  <ResultSummary outcome="Completed">
+    <Counters total="22" executed="22" passed="22" failed="0" error="0" timeout="0" aborted="0" inconclusive="0" passedButRunAborted="0" notRunnable="0" notExecuted="0" disconnected="0" warning="0" completed="0" inProgress="0" pending="0" />
+    <Output>
+      <StdOut>[xUnit.net 00:00:00.00] xUnit.net VSTest Adapter v3.1.4+50e68bbb8b (64-bit .NET 10.0.11)&#xD;
+[xUnit.net 00:00:00.16]   Discovering: QTKD.Api.Tests&#xD;
+[xUnit.net 00:00:00.26]   Discovered:  QTKD.Api.Tests&#xD;
+[xUnit.net 00:00:00.29]   Starting:    QTKD.Api.Tests&#xD;
+info: Microsoft.Hosting.Lifetime[0]&#xD;
+      Application started. Press Ctrl+C to shut down.&#xD;
+info: Microsoft.Hosting.Lifetime[0]&#xD;
+      Application started. Press Ctrl+C to shut down.&#xD;
+info: Microsoft.Hosting.Lifetime[0]&#xD;
+      Hosting environment: Development&#xD;
+info: Microsoft.Hosting.Lifetime[0]&#xD;
+      Content root path: D:\PTUD_HTTT_HD\TH\ph?n 2\PTUD_TH_Phase2\src\QTKD.Api&#xD;
+info: Microsoft.Hosting.Lifetime[0]&#xD;
+      Hosting environment: Development&#xD;
+info: Microsoft.Hosting.Lifetime[0]&#xD;
+      Content root path: D:\PTUD_HTTT_HD\TH\ph?n 2\PTUD_TH_Phase2\src\QTKD.Api&#xD;
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]&#xD;
+      Executed DbCommand (23ms) [Parameters=[], CommandType='Text', CommandTimeout='30']&#xD;
+      SELECT COUNT(*) FROM "sqlite_master" WHERE "type" = 'table' AND "rootpage" IS NOT NULL;&#xD;
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]&#xD;
+      Executed DbCommand (23ms) [Parameters=[], CommandType='Text', CommandTimeout='30']&#xD;
+      SELECT COUNT(*) FROM "sqlite_master" WHERE "type" = 'table' AND "rootpage" IS NOT NULL;&#xD;
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]&#xD;
+      Executed DbCommand (1ms) [Parameters=[], CommandType='Text', CommandTimeout='30']&#xD;
+      CREATE TABLE "Customers" (&#xD;
+          "Id" INTEGER NOT NULL CONSTRAINT "PK_Customers" PRIMARY KEY AUTOINCREMENT,&#xD;
+          "Code" TEXT NOT NULL,&#xD;
+          "Name" TEXT NOT NULL,&#xD;
+          "TaxCode" TEXT NOT NULL,&#xD;
+          "Address" TEXT NOT NULL,&#xD;
+          "RepresentativeName" TEXT NOT NULL,&#xD;
+          "ContactInfo" TEXT NOT NULL,&#xD;
+          "Status" TEXT NOT NULL&#xD;
+      );&#xD;
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]&#xD;
+      Executed DbCommand (1ms) [Parameters=[], CommandType='Text', CommandTimeout='30']&#xD;
+      CREATE TABLE "Customers" (&#xD;
+          "Id" INTEGER NOT NULL CONSTRAINT "PK_Customers" PRIMARY KEY AUTOINCREMENT,&#xD;
+          "Code" TEXT NOT NULL,&#xD;
+          "Name" TEXT NOT NULL,&#xD;
+          "TaxCode" TEXT NOT NULL,&#xD;
+          "Address" TEXT NOT NULL,&#xD;
+          "RepresentativeName" TEXT NOT NULL,&#xD;
+          "ContactInfo" TEXT NOT NULL,&#xD;
+          "Status" TEXT NOT NULL&#xD;
+      );&#xD;
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]&#xD;
+      Executed DbCommand (0ms) [Parameters=[], CommandType='Text', CommandTimeout='30']&#xD;
+      CREATE TABLE "Contracts" (&#xD;
+          "Id" INTEGER NOT NULL CONSTRAINT "PK_Contracts" PRIMARY KEY AUTOINCREMENT,&#xD;
+          "ContractNo" TEXT NOT NULL,&#xD;
+          "CustomerId" INTEGER NOT NULL,&#xD;
+          "StartDate" TEXT NOT NULL,&#xD;
+          "EndDate" TEXT NOT NULL,&#xD;
+          "ContractValue" TEXT NULL,&#xD;
+          "PaymentTerms" TEXT NULL,&#xD;
+          "ServiceTerms" TEXT NULL,&#xD;
+          "Status" TEXT NOT NULL,&#xD;
+          CONSTRAINT "FK_Contracts_Customers_CustomerId" FOREIGN KEY ("CustomerId") REFERENCES "Customers" ("Id") ON DELETE RESTRICT&#xD;
+      );&#xD;
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]&#xD;
+      Executed DbCommand (0ms) [Parameters=[], CommandType='Text', CommandTimeout='30']&#xD;
+      CREATE TABLE "Contracts" (&#xD;
+          "Id" INTEGER NOT NULL CONSTRAINT "PK_Contracts" PRIMARY KEY AUTOINCREMENT,&#xD;
+          "ContractNo" TEXT NOT NULL,&#xD;
+          "CustomerId" INTEGER NOT NULL,&#xD;
+          "StartDate" TEXT NOT NULL,&#xD;
+          "EndDate" TEXT NOT NULL,&#xD;
+          "ContractValue" TEXT NULL,&#xD;
+          "PaymentTerms" TEXT NULL,&#xD;
+          "ServiceTerms" TEXT NULL,&#xD;
+          "Status" TEXT NOT NULL,&#xD;
+          CONSTRAINT "FK_Contracts_Customers_CustomerId" FOREIGN KEY ("CustomerId") REFERENCES "Customers" ("Id") ON DELETE RESTRICT&#xD;
+      );&#xD;
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]&#xD;
+      Executed DbCommand (0ms) [Parameters=[], CommandType='Text', CommandTimeout='30']&#xD;
+      CREATE TABLE "ContractSubmissions" (&#xD;
+          "Id" INTEGER NOT NULL CONSTRAINT "PK_ContractSubmissions" PRIMARY KEY AUTOINCREMENT,&#xD;
+          "ApprovalId" TEXT NOT NULL,&#xD;
+          "ContractId" INTEGER NOT NULL,&#xD;
+          "IdempotencyKey" TEXT NULL,&#xD;
+          "SubmittedAt" TEXT NOT NULL,&#xD;
+          CONSTRAINT "FK_ContractSubmissions_Contracts_ContractId" FOREIGN KEY ("ContractId") REFERENCES "Contracts" ("Id") ON DELETE RESTRICT&#xD;
+      );&#xD;
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]&#xD;
+      Executed DbCommand (0ms) [Parameters=[], CommandType='Text', CommandTimeout='30']&#xD;
+      CREATE TABLE "ContractSubmissions" (&#xD;
+          "Id" INTEGER NOT NULL CONSTRAINT "PK_ContractSubmissions" PRIMARY KEY AUTOINCREMENT,&#xD;
+          "ApprovalId" TEXT NOT NULL,&#xD;
+          "ContractId" INTEGER NOT NULL,&#xD;
+          "IdempotencyKey" TEXT NULL,&#xD;
+          "SubmittedAt" TEXT NOT NULL,&#xD;
+          CONSTRAINT "FK_ContractSubmissions_Contracts_ContractId" FOREIGN KEY ("ContractId") REFERENCES "Contracts" ("Id") ON DELETE RESTRICT&#xD;
+      );&#xD;
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]&#xD;
+      Executed DbCommand (0ms) [Parameters=[], CommandType='Text', CommandTimeout='30']&#xD;
+      CREATE TABLE "PriceLists" (&#xD;
+          "Id" INTEGER NOT NULL CONSTRAINT "PK_PriceLists" PRIMARY KEY AUTOINCREMENT,&#xD;
+          "Name" TEXT NOT NULL,&#xD;
+          "ContractId" INTEGER NOT NULL,&#xD;
+          "EffectiveDate" TEXT NOT NULL,&#xD;
+          "EndDate" TEXT NOT NULL,&#xD;
+          CONSTRAINT "FK_PriceLists_Contracts_ContractId" FOREIGN KEY ("ContractId") REFERENCES "Contracts" ("Id") ON DELETE RESTRICT&#xD;
+      );&#xD;
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]&#xD;
+      Executed DbCommand (0ms) [Parameters=[], CommandType='Text', CommandTimeout='30']&#xD;
+      CREATE TABLE "PriceLists" (&#xD;
+          "Id" INTEGER NOT NULL CONSTRAINT "PK_PriceLists" PRIMARY KEY AUTOINCREMENT,&#xD;
+          "Name" TEXT NOT NULL,&#xD;
+          "ContractId" INTEGER NOT NULL,&#xD;
+          "EffectiveDate" TEXT NOT NULL,&#xD;
+          "EndDate" TEXT NOT NULL,&#xD;
+          CONSTRAINT "FK_PriceLists_Contracts_ContractId" FOREIGN KEY ("ContractId") REFERENCES "Contracts" ("Id") ON DELETE RESTRICT&#xD;
+      );&#xD;
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]&#xD;
+      Executed DbCommand (0ms) [Parameters=[], CommandType='Text', CommandTimeout='30']&#xD;
+      CREATE TABLE "PriceItems" (&#xD;
+          "PriceListId" INTEGER NOT NULL,&#xD;
+          "ServiceCode" TEXT NOT NULL,&#xD;
+          "UnitPrice" TEXT NOT NULL,&#xD;
+          CONSTRAINT "PK_PriceItems" PRIMARY KEY ("PriceListId", "ServiceCode"),&#xD;
+          CONSTRAINT "FK_PriceItems_PriceLists_PriceListId" FOREIGN KEY ("PriceListId") REFERENCES "PriceLists" ("Id") ON DELETE CASCADE&#xD;
+      );&#xD;
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]&#xD;
+      Executed DbCommand (0ms) [Parameters=[], CommandType='Text', CommandTimeout='30']&#xD;
+      CREATE TABLE "PriceItems" (&#xD;
+          "PriceListId" INTEGER NOT NULL,&#xD;
+          "ServiceCode" TEXT NOT NULL,&#xD;
+          "UnitPrice" TEXT NOT NULL,&#xD;
+          CONSTRAINT "PK_PriceItems" PRIMARY KEY ("PriceListId", "ServiceCode"),&#xD;
+          CONSTRAINT "FK_PriceItems_PriceLists_PriceListId" FOREIGN KEY ("PriceListId") REFERENCES "PriceLists" ("Id") ON DELETE CASCADE&#xD;
+      );&#xD;
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]&#xD;
+      Executed DbCommand (0ms) [Parameters=[], CommandType='Text', CommandTimeout='30']&#xD;
+      INSERT INTO "Customers" ("Id", "Address", "Code", "ContactInfo", "Name", "RepresentativeName", "Status", "TaxCode")&#xD;
+      VALUES (1, 'TP. H? Ch� Minh', 'CUS-001', 'minhphat@example.test', 'C�ng ty Minh Ph�t', 'Nguy?n Minh', 'Active', '0310000001');&#xD;
+      SELECT changes();&#xD;
+      INSERT INTO "Customers" ("Id", "Address", "Code", "ContactInfo", "Name", "RepresentativeName", "Status", "TaxCode")&#xD;
+      VALUES (2, 'TP. H? Ch� Minh', 'CUS-002', 'anbinh@example.test', 'C�ng ty An B?nh', 'Tr?n B?nh', 'Active', '0310000002');&#xD;
+      SELECT changes();&#xD;
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]&#xD;
+      Executed DbCommand (0ms) [Parameters=[], CommandType='Text', CommandTimeout='30']&#xD;
+      INSERT INTO "Customers" ("Id", "Address", "Code", "ContactInfo", "Name", "RepresentativeName", "Status", "TaxCode")&#xD;
+      VALUES (1, 'TP. H? Ch� Minh', 'CUS-001', 'minhphat@example.test', 'C�ng ty Minh Ph�t', 'Nguy?n Minh', 'Active', '0310000001');&#xD;
+      SELECT changes();&#xD;
+      INSERT INTO "Customers" ("Id", "Address", "Code", "ContactInfo", "Name", "RepresentativeName", "Status", "TaxCode")&#xD;
+      VALUES (2, 'TP. H? Ch� Minh', 'CUS-002', 'anbinh@example.test', 'C�ng ty An B?nh', 'Tr?n B?nh', 'Active', '0310000002');&#xD;
+      SELECT changes();&#xD;
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]&#xD;
+      Executed DbCommand (0ms) [Parameters=[], CommandType='Text', CommandTimeout='30']&#xD;
+      INSERT INTO "Contracts" ("Id", "ContractNo", "ContractValue", "CustomerId", "EndDate", "PaymentTerms", "ServiceTerms", "StartDate", "Status")&#xD;
+      VALUES (1, 'HD-2026-018', '10000000.0', 1, '2027-09-30', 'Thanh to�n theo th�ng', 'D?ch v? khai th�c c?ng theo th?a thu?n.', '2026-10-01', 'Draft');&#xD;
+      SELECT changes();&#xD;
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]&#xD;
+      Executed DbCommand (0ms) [Parameters=[], CommandType='Text', CommandTimeout='30']&#xD;
+      INSERT INTO "Contracts" ("Id", "ContractNo", "ContractValue", "CustomerId", "EndDate", "PaymentTerms", "ServiceTerms", "StartDate", "Status")&#xD;
+      VALUES (1, 'HD-2026-018', '10000000.0', 1, '2027-09-30', 'Thanh to�n theo th�ng', 'D?ch v? khai th�c c?ng theo th?a thu?n.', '2026-10-01', 'Draft');&#xD;
+      SELECT changes();&#xD;
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]&#xD;
+      Executed DbCommand (0ms) [Parameters=[], CommandType='Text', CommandTimeout='30']&#xD;
+      INSERT INTO "PriceLists" ("Id", "ContractId", "EffectiveDate", "EndDate", "Name")&#xD;
+      VALUES (1, 1, '2026-01-01', '2026-12-31', 'B?ng gi� d?ch v? 2026');&#xD;
+      SELECT changes();&#xD;
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]&#xD;
+      Executed DbCommand (0ms) [Parameters=[], CommandType='Text', CommandTimeout='30']&#xD;
+      INSERT INTO "PriceLists" ("Id", "ContractId", "EffectiveDate", "EndDate", "Name")&#xD;
+      VALUES (1, 1, '2026-01-01', '2026-12-31', 'B?ng gi� d?ch v? 2026');&#xD;
+      SELECT changes();&#xD;
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]&#xD;
+      Executed DbCommand (0ms) [Parameters=[], CommandType='Text', CommandTimeout='30']&#xD;
+      INSERT INTO "PriceItems" ("PriceListId", "ServiceCode", "UnitPrice")&#xD;
+      VALUES (1, 'PORT-001', '1500000.0');&#xD;
+      SELECT changes();&#xD;
+      INSERT INTO "PriceItems" ("PriceListId", "ServiceCode", "UnitPrice")&#xD;
+      VALUES (1, 'PORT-002', '2250000.0');&#xD;
+      SELECT changes();&#xD;
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]&#xD;
+      Executed DbCommand (0ms) [Parameters=[], CommandType='Text', CommandTimeout='30']&#xD;
+      INSERT INTO "PriceItems" ("PriceListId", "ServiceCode", "UnitPrice")&#xD;
+      VALUES (1, 'PORT-001', '1500000.0');&#xD;
+      SELECT changes();&#xD;
+      INSERT INTO "PriceItems" ("PriceListId", "ServiceCode", "UnitPrice")&#xD;
+      VALUES (1, 'PORT-002', '2250000.0');&#xD;
+      SELECT changes();&#xD;
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]&#xD;
+      Executed DbCommand (0ms) [Parameters=[], CommandType='Text', CommandTimeout='30']&#xD;
+      CREATE UNIQUE INDEX "IX_Contracts_ContractNo" ON "Contracts" ("ContractNo");&#xD;
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]&#xD;
+      Executed DbCommand (0ms) [Parameters=[], CommandType='Text', CommandTimeout='30']&#xD;
+      CREATE UNIQUE INDEX "IX_Contracts_ContractNo" ON "Contracts" ("ContractNo");&#xD;
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]&#xD;
+      Executed DbCommand (0ms) [Parameters=[], CommandType='Text', CommandTimeout='30']&#xD;
+      CREATE INDEX "IX_Contracts_CustomerId" ON "Contracts" ("CustomerId");&#xD;
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]&#xD;
+      Executed DbCommand (0ms) [Parameters=[], CommandType='Text', CommandTimeout='30']&#xD;
+      CREATE INDEX "IX_Contracts_CustomerId" ON "Contracts" ("CustomerId");&#xD;
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]&#xD;
+      Executed DbCommand (0ms) [Parameters=[], CommandType='Text', CommandTimeout='30']&#xD;
+      CREATE UNIQUE INDEX "IX_ContractSubmissions_ContractId" ON "ContractSubmissions" ("ContractId");&#xD;
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]&#xD;
+      Executed DbCommand (0ms) [Parameters=[], CommandType='Text', CommandTimeout='30']&#xD;
+      CREATE UNIQUE INDEX "IX_ContractSubmissions_ContractId" ON "ContractSubmissions" ("ContractId");&#xD;
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]&#xD;
+      Executed DbCommand (0ms) [Parameters=[], CommandType='Text', CommandTimeout='30']&#xD;
+      CREATE UNIQUE INDEX "IX_ContractSubmissions_IdempotencyKey" ON "ContractSubmissions" ("IdempotencyKey") WHERE "IdempotencyKey" IS NOT NULL;&#xD;
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]&#xD;
+      Executed DbCommand (0ms) [Parameters=[], CommandType='Text', CommandTimeout='30']&#xD;
+      CREATE UNIQUE INDEX "IX_ContractSubmissions_IdempotencyKey" ON "ContractSubmissions" ("IdempotencyKey") WHERE "IdempotencyKey" IS NOT NULL;&#xD;
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]&#xD;
+      Executed DbCommand (0ms) [Parameters=[], CommandType='Text', CommandTimeout='30']&#xD;
+      CREATE UNIQUE INDEX "IX_Customers_Code" ON "Customers" ("Code");&#xD;
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]&#xD;
+      Executed DbCommand (0ms) [Parameters=[], CommandType='Text', CommandTimeout='30']&#xD;
+      CREATE UNIQUE INDEX "IX_Customers_Code" ON "Customers" ("Code");&#xD;
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]&#xD;
+      Executed DbCommand (0ms) [Parameters=[], CommandType='Text', CommandTimeout='30']&#xD;
+      CREATE UNIQUE INDEX "IX_Customers_TaxCode" ON "Customers" ("TaxCode");&#xD;
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]&#xD;
+      Executed DbCommand (0ms) [Parameters=[], CommandType='Text', CommandTimeout='30']&#xD;
+      CREATE INDEX "IX_PriceLists_ContractId" ON "PriceLists" ("ContractId");&#xD;
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]&#xD;
+      Executed DbCommand (0ms) [Parameters=[], CommandType='Text', CommandTimeout='30']&#xD;
+      CREATE UNIQUE INDEX "IX_Customers_TaxCode" ON "Customers" ("TaxCode");&#xD;
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]&#xD;
+      Executed DbCommand (0ms) [Parameters=[], CommandType='Text', CommandTimeout='30']&#xD;
+      CREATE INDEX "IX_PriceLists_ContractId" ON "PriceLists" ("ContractId");&#xD;
+warn: Microsoft.AspNetCore.HttpsPolicy.HttpsRedirectionMiddleware[3]&#xD;
+      Failed to determine the https port for redirect.&#xD;
+warn: Microsoft.AspNetCore.HttpsPolicy.HttpsRedirectionMiddleware[3]&#xD;
+      Failed to determine the https port for redirect.&#xD;
+info: Microsoft.Hosting.Lifetime[0]&#xD;
+      Application is shutting down...&#xD;
+info: Microsoft.Hosting.Lifetime[0]&#xD;
+      Application started. Press Ctrl+C to shut down.&#xD;
+info: Microsoft.Hosting.Lifetime[0]&#xD;
+      Hosting environment: Development&#xD;
+info: Microsoft.Hosting.Lifetime[0]&#xD;
+      Content root path: D:\PTUD_HTTT_HD\TH\ph?n 2\PTUD_TH_Phase2\src\QTKD.Api&#xD;
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]&#xD;
+      Executed DbCommand (0ms) [Parameters=[], CommandType='Text', CommandTimeout='30']&#xD;
+      SELECT COUNT(*) FROM "sqlite_master" WHERE "type" = 'table' AND "rootpage" IS NOT NULL;&#xD;
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]&#xD;
+      Executed DbCommand (0ms) [Parameters=[], CommandType='Text', CommandTimeout='30']&#xD;
+      CREATE TABLE "Customers" (&#xD;
+          "Id" INTEGER NOT NULL CONSTRAINT "PK_Customers" PRIMARY KEY AUTOINCREMENT,&#xD;
+          "Code" TEXT NOT NULL,&#xD;
+          "Name" TEXT NOT NULL,&#xD;
+          "TaxCode" TEXT NOT NULL,&#xD;
+          "Address" TEXT NOT NULL,&#xD;
+          "RepresentativeName" TEXT NOT NULL,&#xD;
+          "ContactInfo" TEXT NOT NULL,&#xD;
+          "Status" TEXT NOT NULL&#xD;
+      );&#xD;
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]&#xD;
+      Executed DbCommand (0ms) [Parameters=[], CommandType='Text', CommandTimeout='30']&#xD;
+      CREATE TABLE "Contracts" (&#xD;
+          "Id" INTEGER NOT NULL CONSTRAINT "PK_Contracts" PRIMARY KEY AUTOINCREMENT,&#xD;
+          "ContractNo" TEXT NOT NULL,&#xD;
+          "CustomerId" INTEGER NOT NULL,&#xD;
+          "StartDate" TEXT NOT NULL,&#xD;
+          "EndDate" TEXT NOT NULL,&#xD;
+          "ContractValue" TEXT NULL,&#xD;
+          "PaymentTerms" TEXT NULL,&#xD;
+          "ServiceTerms" TEXT NULL,&#xD;
+          "Status" TEXT NOT NULL,&#xD;
+          CONSTRAINT "FK_Contracts_Customers_CustomerId" FOREIGN KEY ("CustomerId") REFERENCES "Customers" ("Id") ON DELETE RESTRICT&#xD;
+      );&#xD;
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]&#xD;
+      Executed DbCommand (0ms) [Parameters=[], CommandType='Text', CommandTimeout='30']&#xD;
+      CREATE TABLE "ContractSubmissions" (&#xD;
+          "Id" INTEGER NOT NULL CONSTRAINT "PK_ContractSubmissions" PRIMARY KEY AUTOINCREMENT,&#xD;
+          "ApprovalId" TEXT NOT NULL,&#xD;
+          "ContractId" INTEGER NOT NULL,&#xD;
+          "IdempotencyKey" TEXT NULL,&#xD;
+          "SubmittedAt" TEXT NOT NULL,&#xD;
+          CONSTRAINT "FK_ContractSubmissions_Contracts_ContractId" FOREIGN KEY ("ContractId") REFERENCES "Contracts" ("Id") ON DELETE RESTRICT&#xD;
+      );&#xD;
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]&#xD;
+      Executed DbCommand (0ms) [Parameters=[], CommandType='Text', CommandTimeout='30']&#xD;
+      CREATE TABLE "PriceLists" (&#xD;
+          "Id" INTEGER NOT NULL CONSTRAINT "PK_PriceLists" PRIMARY KEY AUTOINCREMENT,&#xD;
+          "Name" TEXT NOT NULL,&#xD;
+          "ContractId" INTEGER NOT NULL,&#xD;
+          "EffectiveDate" TEXT NOT NULL,&#xD;
+          "EndDate" TEXT NOT NULL,&#xD;
+          CONSTRAINT "FK_PriceLists_Contracts_ContractId" FOREIGN KEY ("ContractId") REFERENCES "Contracts" ("Id") ON DELETE RESTRICT&#xD;
+      );&#xD;
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]&#xD;
+      Executed DbCommand (0ms) [Parameters=[], CommandType='Text', CommandTimeout='30']&#xD;
+      CREATE TABLE "PriceItems" (&#xD;
+          "PriceListId" INTEGER NOT NULL,&#xD;
+          "ServiceCode" TEXT NOT NULL,&#xD;
+          "UnitPrice" TEXT NOT NULL,&#xD;
+          CONSTRAINT "PK_PriceItems" PRIMARY KEY ("PriceListId", "ServiceCode"),&#xD;
+          CONSTRAINT "FK_PriceItems_PriceLists_PriceListId" FOREIGN KEY ("PriceListId") REFERENCES "PriceLists" ("Id") ON DELETE CASCADE&#xD;
+      );&#xD;
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]&#xD;
+      Executed DbCommand (0ms) [Parameters=[], CommandType='Text', CommandTimeout='30']&#xD;
+      INSERT INTO "Customers" ("Id", "Address", "Code", "ContactInfo", "Name", "RepresentativeName", "Status", "TaxCode")&#xD;
+      VALUES (1, 'TP. H? Ch� Minh', 'CUS-001', 'minhphat@example.test', 'C�ng ty Minh Ph�t', 'Nguy?n Minh', 'Active', '0310000001');&#xD;
+      SELECT changes();&#xD;
+      INSERT INTO "Customers" ("Id", "Address", "Code", "ContactInfo", "Name", "RepresentativeName", "Status", "TaxCode")&#xD;
+      VALUES (2, 'TP. H? Ch� Minh', 'CUS-002', 'anbinh@example.test', 'C�ng ty An B?nh', 'Tr?n B?nh', 'Active', '0310000002');&#xD;
+      SELECT changes();&#xD;
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]&#xD;
+      Executed DbCommand (0ms) [Parameters=[], CommandType='Text', CommandTimeout='30']&#xD;
+      INSERT INTO "Contracts" ("Id", "ContractNo", "ContractValue", "CustomerId", "EndDate", "PaymentTerms", "ServiceTerms", "StartDate", "Status")&#xD;
+      VALUES (1, 'HD-2026-018', '10000000.0', 1, '2027-09-30', 'Thanh to�n theo th�ng', 'D?ch v? khai th�c c?ng theo th?a thu?n.', '2026-10-01', 'Draft');&#xD;
+      SELECT changes();&#xD;
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]&#xD;
+      Executed DbCommand (0ms) [Parameters=[], CommandType='Text', CommandTimeout='30']&#xD;
+      INSERT INTO "PriceLists" ("Id", "ContractId", "EffectiveDate", "EndDate", "Name")&#xD;
+      VALUES (1, 1, '2026-01-01', '2026-12-31', 'B?ng gi� d?ch v? 2026');&#xD;
+      SELECT changes();&#xD;
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]&#xD;
+      Executed DbCommand (0ms) [Parameters=[], CommandType='Text', CommandTimeout='30']&#xD;
+      INSERT INTO "PriceItems" ("PriceListId", "ServiceCode", "UnitPrice")&#xD;
+      VALUES (1, 'PORT-001', '1500000.0');&#xD;
+      SELECT changes();&#xD;
+      INSERT INTO "PriceItems" ("PriceListId", "ServiceCode", "UnitPrice")&#xD;
+      VALUES (1, 'PORT-002', '2250000.0');&#xD;
+      SELECT changes();&#xD;
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]&#xD;
+      Executed DbCommand (0ms) [Parameters=[], CommandType='Text', CommandTimeout='30']&#xD;
+      CREATE UNIQUE INDEX "IX_Contracts_ContractNo" ON "Contracts" ("ContractNo");&#xD;
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]&#xD;
+      Executed DbCommand (0ms) [Parameters=[], CommandType='Text', CommandTimeout='30']&#xD;
+      CREATE INDEX "IX_Contracts_CustomerId" ON "Contracts" ("CustomerId");&#xD;
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]&#xD;
+      Executed DbCommand (0ms) [Parameters=[], CommandType='Text', CommandTimeout='30']&#xD;
+      CREATE UNIQUE INDEX "IX_ContractSubmissions_ContractId" ON "ContractSubmissions" ("ContractId");&#xD;
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]&#xD;
+      Executed DbCommand (0ms) [Parameters=[], CommandType='Text', CommandTimeout='30']&#xD;
+      CREATE UNIQUE INDEX "IX_ContractSubmissions_IdempotencyKey" ON "ContractSubmissions" ("IdempotencyKey") WHERE "IdempotencyKey" IS NOT NULL;&#xD;
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]&#xD;
+      Executed DbCommand (0ms) [Parameters=[], CommandType='Text', CommandTimeout='30']&#xD;
+      CREATE UNIQUE INDEX "IX_Customers_Code" ON "Customers" ("Code");&#xD;
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]&#xD;
+      Executed DbCommand (0ms) [Parameters=[], CommandType='Text', CommandTimeout='30']&#xD;
+      CREATE UNIQUE INDEX "IX_Customers_TaxCode" ON "Customers" ("TaxCode");&#xD;
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]&#xD;
+      Executed DbCommand (0ms) [Parameters=[], CommandType='Text', CommandTimeout='30']&#xD;
+      CREATE INDEX "IX_PriceLists_ContractId" ON "PriceLists" ("ContractId");&#xD;
+warn: Microsoft.AspNetCore.HttpsPolicy.HttpsRedirectionMiddleware[3]&#xD;
+      Failed to determine the https port for redirect.&#xD;
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]&#xD;
+      Executed DbCommand (0ms) [Parameters=[@id='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']&#xD;
+      SELECT "c"."CustomerId", "c"."StartDate", "c"."EndDate", "c"."ServiceTerms", "c"."Status"&#xD;
+      FROM "Contracts" AS "c"&#xD;
+      WHERE "c"."Id" = @id&#xD;
+      LIMIT 2&#xD;
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]&#xD;
+      Executed DbCommand (0ms) [Parameters=[@code='?' (Size = 23), @taxCode='?' (Size = 30)], CommandType='Text', CommandTimeout='30']&#xD;
+      SELECT EXISTS (&#xD;
+          SELECT 1&#xD;
+          FROM "Customers" AS "c"&#xD;
+          WHERE "c"."Code" = @code OR "c"."TaxCode" = @taxCode)&#xD;
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]&#xD;
+      Executed DbCommand (0ms) [Parameters=[@p0='?' (Size = 15), @p1='?' (Size = 23), @p2='?' (Size = 10), @p3='?' (Size = 17), @p4='?' (Size = 12), @p5='?' (Size = 6), @p6='?' (Size = 30)], CommandType='Text', CommandTimeout='30']&#xD;
+      INSERT INTO "Customers" ("Address", "Code", "ContactInfo", "Name", "RepresentativeName", "Status", "TaxCode")&#xD;
+      VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6)&#xD;
+      RETURNING "Id";&#xD;
+info: Microsoft.Hosting.Lifetime[0]&#xD;
+      Application is shutting down...&#xD;
+info: Microsoft.Hosting.Lifetime[0]&#xD;
+      Application started. Press Ctrl+C to shut down.&#xD;
+info: Microsoft.Hosting.Lifetime[0]&#xD;
+      Hosting environment: Development&#xD;
+info: Microsoft.Hosting.Lifetime[0]&#xD;
+      Content root path: D:\PTUD_HTTT_HD\TH\ph?n 2\PTUD_TH_Phase2\src\QTKD.Api&#xD;
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]&#xD;
+      Executed DbCommand (0ms) [Parameters=[], CommandType='Text', CommandTimeout='30']&#xD;
+      SELECT COUNT(*) FROM "sqlite_master" WHERE "type" = 'table' AND "rootpage" IS NOT NULL;&#xD;
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]&#xD;
+      Executed DbCommand (0ms) [Parameters=[], CommandType='Text', CommandTimeout='30']&#xD;
+      CREATE TABLE "Customers" (&#xD;
+          "Id" INTEGER NOT NULL CONSTRAINT "PK_Customers" PRIMARY KEY AUTOINCREMENT,&#xD;
+          "Code" TEXT NOT NULL,&#xD;
+          "Name" TEXT NOT NULL,&#xD;
+          "TaxCode" TEXT NOT NULL,&#xD;
+          "Address" TEXT NOT NULL,&#xD;
+          "RepresentativeName" TEXT NOT NULL,&#xD;
+          "ContactInfo" TEXT NOT NULL,&#xD;
+          "Status" TEXT NOT NULL&#xD;
+      );&#xD;
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]&#xD;
+      Executed DbCommand (0ms) [Parameters=[], CommandType='Text', CommandTimeout='30']&#xD;
+      CREATE TABLE "Contracts" (&#xD;
+          "Id" INTEGER NOT NULL CONSTRAINT "PK_Contracts" PRIMARY KEY AUTOINCREMENT,&#xD;
+          "ContractNo" TEXT NOT NULL,&#xD;
+          "CustomerId" INTEGER NOT NULL,&#xD;
+          "StartDate" TEXT NOT NULL,&#xD;
+          "EndDate" TEXT NOT NULL,&#xD;
+          "ContractValue" TEXT NULL,&#xD;
+          "PaymentTerms" TEXT NULL,&#xD;
+          "ServiceTerms" TEXT NULL,&#xD;
+          "Status" TEXT NOT NULL,&#xD;
+          CONSTRAINT "FK_Contracts_Customers_CustomerId" FOREIGN KEY ("CustomerId") REFERENCES "Customers" ("Id") ON DELETE RESTRICT&#xD;
+      );&#xD;
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]&#xD;
+      Executed DbCommand (0ms) [Parameters=[], CommandType='Text', CommandTimeout='30']&#xD;
+      CREATE TABLE "ContractSubmissions" (&#xD;
+          "Id" INTEGER NOT NULL CONSTRAINT "PK_ContractSubmissions" PRIMARY KEY AUTOINCREMENT,&#xD;
+          "ApprovalId" TEXT NOT NULL,&#xD;
+          "ContractId" INTEGER NOT NULL,&#xD;
+          "IdempotencyKey" TEXT NULL,&#xD;
+          "SubmittedAt" TEXT NOT NULL,&#xD;
+          CONSTRAINT "FK_ContractSubmissions_Contracts_ContractId" FOREIGN KEY ("ContractId") REFERENCES "Contracts" ("Id") ON DELETE RESTRICT&#xD;
+      );&#xD;
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]&#xD;
+      Executed DbCommand (0ms) [Parameters=[], CommandType='Text', CommandTimeout='30']&#xD;
+      CREATE TABLE "PriceLists" (&#xD;
+          "Id" INTEGER NOT NULL CONSTRAINT "PK_PriceLists" PRIMARY KEY AUTOINCREMENT,&#xD;
+          "Name" TEXT NOT NULL,&#xD;
+          "ContractId" INTEGER NOT NULL,&#xD;
+          "EffectiveDate" TEXT NOT NULL,&#xD;
+          "EndDate" TEXT NOT NULL,&#xD;
+          CONSTRAINT "FK_PriceLists_Contracts_ContractId" FOREIGN KEY ("ContractId") REFERENCES "Contracts" ("Id") ON DELETE RESTRICT&#xD;
+      );&#xD;
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]&#xD;
+      Executed DbCommand (0ms) [Parameters=[], CommandType='Text', CommandTimeout='30']&#xD;
+      CREATE TABLE "PriceItems" (&#xD;
+          "PriceListId" INTEGER NOT NULL,&#xD;
+          "ServiceCode" TEXT NOT NULL,&#xD;
+          "UnitPrice" TEXT NOT NULL,&#xD;
+          CONSTRAINT "PK_PriceItems" PRIMARY KEY ("PriceListId", "ServiceCode"),&#xD;
+          CONSTRAINT "FK_PriceItems_PriceLists_PriceListId" FOREIGN KEY ("PriceListId") REFERENCES "PriceLists" ("Id") ON DELETE CASCADE&#xD;
+      );&#xD;
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]&#xD;
+      Executed DbCommand (0ms) [Parameters=[], CommandType='Text', CommandTimeout='30']&#xD;
+      INSERT INTO "Customers" ("Id", "Address", "Code", "ContactInfo", "Name", "RepresentativeName", "Status", "TaxCode")&#xD;
+      VALUES (1, 'TP. H? Ch� Minh', 'CUS-001', 'minhphat@example.test', 'C�ng ty Minh Ph�t', 'Nguy?n Minh', 'Active', '0310000001');&#xD;
+      SELECT changes();&#xD;
+      INSERT INTO "Customers" ("Id", "Address", "Code", "ContactInfo", "Name", "RepresentativeName", "Status", "TaxCode")&#xD;
+      VALUES (2, 'TP. H? Ch� Minh', 'CUS-002', 'anbinh@example.test', 'C�ng ty An B?nh', 'Tr?n B?nh', 'Active', '0310000002');&#xD;
+      SELECT changes();&#xD;
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]&#xD;
+      Executed DbCommand (0ms) [Parameters=[], CommandType='Text', CommandTimeout='30']&#xD;
+      INSERT INTO "Contracts" ("Id", "ContractNo", "ContractValue", "CustomerId", "EndDate", "PaymentTerms", "ServiceTerms", "StartDate", "Status")&#xD;
+      VALUES (1, 'HD-2026-018', '10000000.0', 1, '2027-09-30', 'Thanh to�n theo th�ng', 'D?ch v? khai th�c c?ng theo th?a thu?n.', '2026-10-01', 'Draft');&#xD;
+      SELECT changes();&#xD;
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]&#xD;
+      Executed DbCommand (0ms) [Parameters=[], CommandType='Text', CommandTimeout='30']&#xD;
+      INSERT INTO "PriceLists" ("Id", "ContractId", "EffectiveDate", "EndDate", "Name")&#xD;
+      VALUES (1, 1, '2026-01-01', '2026-12-31', 'B?ng gi� d?ch v? 2026');&#xD;
+      SELECT changes();&#xD;
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]&#xD;
+      Executed DbCommand (0ms) [Parameters=[], CommandType='Text', CommandTimeout='30']&#xD;
+      INSERT INTO "PriceItems" ("PriceListId", "ServiceCode", "UnitPrice")&#xD;
+      VALUES (1, 'PORT-001', '1500000.0');&#xD;
+      SELECT changes();&#xD;
+      INSERT INTO "PriceItems" ("PriceListId", "ServiceCode", "UnitPrice")&#xD;
+      VALUES (1, 'PORT-002', '2250000.0');&#xD;
+      SELECT changes();&#xD;
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]&#xD;
+      Executed DbCommand (0ms) [Parameters=[], CommandType='Text', CommandTimeout='30']&#xD;
+      CREATE UNIQUE INDEX "IX_Contracts_ContractNo" ON "Contracts" ("ContractNo");&#xD;
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]&#xD;
+      Executed DbCommand (0ms) [Parameters=[], CommandType='Text', CommandTimeout='30']&#xD;
+      CREATE INDEX "IX_Contracts_CustomerId" ON "Contracts" ("CustomerId");&#xD;
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]&#xD;
+      Executed DbCommand (0ms) [Parameters=[], CommandType='Text', CommandTimeout='30']&#xD;
+      CREATE UNIQUE INDEX "IX_ContractSubmissions_ContractId" ON "ContractSubmissions" ("ContractId");&#xD;
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]&#xD;
+      Executed DbCommand (0ms) [Parameters=[], CommandType='Text', CommandTimeout='30']&#xD;
+      CREATE UNIQUE INDEX "IX_ContractSubmissions_IdempotencyKey" ON "ContractSubmissions" ("IdempotencyKey") WHERE "IdempotencyKey" IS NOT NULL;&#xD;
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]&#xD;
+      Executed DbCommand (0ms) [Parameters=[], CommandType='Text', CommandTimeout='30']&#xD;
+      CREATE UNIQUE INDEX "IX_Customers_Code" ON "Customers" ("Code");&#xD;
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]&#xD;
+      Executed DbCommand (0ms) [Parameters=[], CommandType='Text', CommandTimeout='30']&#xD;
+      CREATE UNIQUE INDEX "IX_Customers_TaxCode" ON "Customers" ("TaxCode");&#xD;
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]&#xD;
+      Executed DbCommand (0ms) [Parameters=[], CommandType='Text', CommandTimeout='30']&#xD;
+      CREATE INDEX "IX_PriceLists_ContractId" ON "PriceLists" ("ContractId");&#xD;
+warn: Microsoft.AspNetCore.HttpsPolicy.HttpsRedirectionMiddleware[3]&#xD;
+      Failed to determine the https port for redirect.&#xD;
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]&#xD;
+      Executed DbCommand (0ms) [Parameters=[@id='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']&#xD;
+      SELECT "c"."Id", "c"."Code", "c"."Name", "c"."TaxCode", "c"."Address", "c"."RepresentativeName", "c"."ContactInfo", "c"."Status"&#xD;
+      FROM "Customers" AS "c"&#xD;
+      WHERE "c"."Id" = @id&#xD;
+      LIMIT 2&#xD;
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]&#xD;
+      Executed DbCommand (0ms) [Parameters=[@code='?' (Size = 23), @taxCode='?' (Size = 30)], CommandType='Text', CommandTimeout='30']&#xD;
+      SELECT EXISTS (&#xD;
+          SELECT 1&#xD;
+          FROM "Customers" AS "c"&#xD;
+          WHERE "c"."Code" = @code OR "c"."TaxCode" = @taxCode)&#xD;
+info: Microsoft.Hosting.Lifetime[0]&#xD;
+      Application is shutting down...&#xD;
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]&#xD;
+      Executed DbCommand (0ms) [Parameters=[@p0='?' (Size = 15), @p1='?' (Size = 23), @p2='?' (Size = 10), @p3='?' (Size = 16), @p4='?' (Size = 9), @p5='?' (Size = 6), @p6='?' (Size = 30)], CommandType='Text', CommandTimeout='30']&#xD;
+      INSERT INTO "Customers" ("Address", "Code", "ContactInfo", "Name", "RepresentativeName", "Status", "TaxCode")&#xD;
+      VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6)&#xD;
+      RETURNING "Id";&#xD;
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]&#xD;
+      Executed DbCommand (0ms) [Parameters=[@customerId='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']&#xD;
+      SELECT EXISTS (&#xD;
+          SELECT 1&#xD;
+          FROM "Customers" AS "c"&#xD;
+          WHERE "c"."Id" = @customerId AND "c"."Status" = 'Active')&#xD;
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]&#xD;
+      Executed DbCommand (0ms) [Parameters=[@contractNo='?' (Size = 40)], CommandType='Text', CommandTimeout='30']&#xD;
+      SELECT EXISTS (&#xD;
+          SELECT 1&#xD;
+          FROM "Contracts" AS "c"&#xD;
+          WHERE "c"."ContractNo" = @contractNo)&#xD;
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]&#xD;
+      Executed DbCommand (1ms) [Parameters=[@p0='?' (Size = 40), @p1='?' (DbType = Decimal), @p2='?' (DbType = Int32), @p3='?' (DbType = Date), @p4='?', @p5='?', @p6='?' (DbType = Date), @p7='?' (Size = 5)], CommandType='Text', CommandTimeout='30']&#xD;
+      INSERT INTO "Contracts" ("ContractNo", "ContractValue", "CustomerId", "EndDate", "PaymentTerms", "ServiceTerms", "StartDate", "Status")&#xD;
+      VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6, @p7)&#xD;
+      RETURNING "Id";&#xD;
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]&#xD;
+      Executed DbCommand (0ms) [Parameters=[@id='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']&#xD;
+      SELECT "c"."Id", "c"."ContractNo", "c"."CustomerId", "c0"."Name", "c"."StartDate", "c"."EndDate", "c"."ContractValue", "c"."PaymentTerms", "c"."ServiceTerms", "c"."Status"&#xD;
+      FROM "Contracts" AS "c"&#xD;
+      INNER JOIN "Customers" AS "c0" ON "c"."CustomerId" = "c0"."Id"&#xD;
+      WHERE "c"."Id" = @id&#xD;
+      LIMIT 2&#xD;
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]&#xD;
+      Executed DbCommand (0ms) [Parameters=[@normalizedKey='?' (Size = 39)], CommandType='Text', CommandTimeout='30']&#xD;
+      SELECT "c"."Id", "c"."ApprovalId", "c"."ContractId", "c"."IdempotencyKey", "c"."SubmittedAt"&#xD;
+      FROM "ContractSubmissions" AS "c"&#xD;
+      WHERE "c"."IdempotencyKey" = @normalizedKey&#xD;
+      LIMIT 2&#xD;
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]&#xD;
+      Executed DbCommand (0ms) [Parameters=[@id='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']&#xD;
+      SELECT "c"."CustomerId", "c"."StartDate", "c"."EndDate", "c"."ServiceTerms", "c"."Status"&#xD;
+      FROM "Contracts" AS "c"&#xD;
+      WHERE "c"."Id" = @id&#xD;
+      LIMIT 2&#xD;
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]&#xD;
+      Executed DbCommand (0ms) [Parameters=[@contract_CustomerId='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']&#xD;
+      SELECT EXISTS (&#xD;
+          SELECT 1&#xD;
+          FROM "Customers" AS "c"&#xD;
+          WHERE "c"."Id" = @contract_CustomerId AND "c"."Status" = 'Active')&#xD;
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]&#xD;
+      Executed DbCommand (0ms) [Parameters=[@createdContract_Id='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']&#xD;
+      SELECT COUNT(*)&#xD;
+      FROM "ContractSubmissions" AS "c"&#xD;
+      WHERE "c"."ContractId" = @createdContract_Id&#xD;
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]&#xD;
+      Executed DbCommand (0ms) [Parameters=[@id='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']&#xD;
+      SELECT "c"."Id", "c"."ContractNo", "c"."CustomerId", "c0"."Name", "c"."StartDate", "c"."EndDate", "c"."ContractValue", "c"."PaymentTerms", "c"."ServiceTerms", "c"."Status"&#xD;
+      FROM "Contracts" AS "c"&#xD;
+      INNER JOIN "Customers" AS "c0" ON "c"."CustomerId" = "c0"."Id"&#xD;
+      WHERE "c"."Id" = @id&#xD;
+      LIMIT 2&#xD;
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]&#xD;
+      Executed DbCommand (0ms) [Parameters=[@id='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']&#xD;
+      SELECT "c"."Id", "c"."ContractNo", "c"."CustomerId", "c0"."Name", "c"."StartDate", "c"."EndDate", "c"."ContractValue", "c"."PaymentTerms", "c"."ServiceTerms", "c"."Status"&#xD;
+      FROM "Contracts" AS "c"&#xD;
+      INNER JOIN "Customers" AS "c0" ON "c"."CustomerId" = "c0"."Id"&#xD;
+      WHERE "c"."Id" = @id&#xD;
+      LIMIT 2&#xD;
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]&#xD;
+      Executed DbCommand (0ms) [Parameters=[@id='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']&#xD;
+      SELECT "c"."Id", "c"."ContractNo", "c"."ContractValue", "c"."CustomerId", "c"."EndDate", "c"."PaymentTerms", "c"."ServiceTerms", "c"."StartDate", "c"."Status"&#xD;
+      FROM "Contracts" AS "c"&#xD;
+      WHERE "c"."Id" = @id&#xD;
+      LIMIT 2&#xD;
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]&#xD;
+      Executed DbCommand (0ms) [Parameters=[@customerId='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']&#xD;
+      SELECT EXISTS (&#xD;
+          SELECT 1&#xD;
+          FROM "Customers" AS "c"&#xD;
+          WHERE "c"."Id" = @customerId AND "c"."Status" = 'Active')&#xD;
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]&#xD;
+      Executed DbCommand (0ms) [Parameters=[@id='?' (DbType = Int32), @contractNo='?' (Size = 40)], CommandType='Text', CommandTimeout='30']&#xD;
+      SELECT EXISTS (&#xD;
+          SELECT 1&#xD;
+          FROM "Contracts" AS "c"&#xD;
+          WHERE "c"."Id" &lt;&gt; @id AND "c"."ContractNo" = @contractNo)&#xD;
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]&#xD;
+      Executed DbCommand (1ms) [Parameters=[@p='?' (Size = 40), @p2='?' (DbType = Int32), @p3='?' (DbType = Date), @p4='?' (DbType = Date), @p5='?' (DbType = Decimal), @p6='?' (Size = 21), @p7='?' (Size = 39), @id='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']&#xD;
+      UPDATE "Contracts" AS "c"&#xD;
+      SET "ContractNo" = @p,&#xD;
+          "CustomerId" = @p2,&#xD;
+          "StartDate" = @p3,&#xD;
+          "EndDate" = @p4,&#xD;
+          "ContractValue" = @p5,&#xD;
+          "PaymentTerms" = @p6,&#xD;
+          "ServiceTerms" = @p7&#xD;
+      WHERE "c"."Id" = @id AND "c"."Status" IN ('Draft', 'Revision Requested')&#xD;
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]&#xD;
+      Executed DbCommand (0ms) [Parameters=[@id='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']&#xD;
+      SELECT "c"."Id", "c"."ContractNo", "c"."CustomerId", "c0"."Name", "c"."StartDate", "c"."EndDate", "c"."ContractValue", "c"."PaymentTerms", "c"."ServiceTerms", "c"."Status"&#xD;
+      FROM "Contracts" AS "c"&#xD;
+      INNER JOIN "Customers" AS "c0" ON "c"."CustomerId" = "c0"."Id"&#xD;
+      WHERE "c"."Id" = @id&#xD;
+      LIMIT 2&#xD;
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]&#xD;
+      Executed DbCommand (0ms) [Parameters=[@normalizedKey='?' (Size = 39)], CommandType='Text', CommandTimeout='30']&#xD;
+      SELECT "c"."Id", "c"."ApprovalId", "c"."ContractId", "c"."IdempotencyKey", "c"."SubmittedAt"&#xD;
+      FROM "ContractSubmissions" AS "c"&#xD;
+      WHERE "c"."IdempotencyKey" = @normalizedKey&#xD;
+      LIMIT 2&#xD;
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]&#xD;
+      Executed DbCommand (0ms) [Parameters=[@id='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']&#xD;
+      SELECT "c"."CustomerId", "c"."StartDate", "c"."EndDate", "c"."ServiceTerms", "c"."Status"&#xD;
+      FROM "Contracts" AS "c"&#xD;
+      WHERE "c"."Id" = @id&#xD;
+      LIMIT 2&#xD;
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]&#xD;
+      Executed DbCommand (0ms) [Parameters=[@contract_CustomerId='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']&#xD;
+      SELECT EXISTS (&#xD;
+          SELECT 1&#xD;
+          FROM "Customers" AS "c"&#xD;
+          WHERE "c"."Id" = @contract_CustomerId AND "c"."Status" = 'Active')&#xD;
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]&#xD;
+      Executed DbCommand (0ms) [Parameters=[@p='?' (Size = 15), @id='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']&#xD;
+      UPDATE "Contracts" AS "c"&#xD;
+      SET "Status" = @p&#xD;
+      WHERE "c"."Id" = @id AND "c"."Status" = 'Draft'&#xD;
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]&#xD;
+      Executed DbCommand (0ms) [Parameters=[@p0='?' (DbType = Guid), @p1='?' (DbType = Int32), @p2='?' (Size = 39), @p3='?' (DbType = DateTimeOffset)], CommandType='Text', CommandTimeout='30']&#xD;
+      INSERT INTO "ContractSubmissions" ("ApprovalId", "ContractId", "IdempotencyKey", "SubmittedAt")&#xD;
+      VALUES (@p0, @p1, @p2, @p3)&#xD;
+      RETURNING "Id";&#xD;
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]&#xD;
+      Executed DbCommand (0ms) [Parameters=[@id='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']&#xD;
+      SELECT "c"."Id", "c"."ContractNo", "c"."CustomerId", "c0"."Name", "c"."StartDate", "c"."EndDate", "c"."ContractValue", "c"."PaymentTerms", "c"."ServiceTerms", "c"."Status"&#xD;
+      FROM "Contracts" AS "c"&#xD;
+      INNER JOIN "Customers" AS "c0" ON "c"."CustomerId" = "c0"."Id"&#xD;
+      WHERE "c"."Id" = @id&#xD;
+      LIMIT 2&#xD;
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]&#xD;
+      Executed DbCommand (0ms) [Parameters=[@id='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']&#xD;
+      SELECT "c"."Id", "c"."ContractNo", "c"."ContractValue", "c"."CustomerId", "c"."EndDate", "c"."PaymentTerms", "c"."ServiceTerms", "c"."StartDate", "c"."Status"&#xD;
+      FROM "Contracts" AS "c"&#xD;
+      WHERE "c"."Id" = @id&#xD;
+      LIMIT 2&#xD;
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]&#xD;
+      Executed DbCommand (0ms) [Parameters=[@id='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']&#xD;
+      SELECT "c"."Id", "c"."ContractNo", "c"."CustomerId", "c0"."Name", "c"."StartDate", "c"."EndDate", "c"."ContractValue", "c"."PaymentTerms", "c"."ServiceTerms", "c"."Status"&#xD;
+      FROM "Contracts" AS "c"&#xD;
+      INNER JOIN "Customers" AS "c0" ON "c"."CustomerId" = "c0"."Id"&#xD;
+      WHERE "c"."Id" = @id&#xD;
+      LIMIT 2&#xD;
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]&#xD;
+      Executed DbCommand (0ms) [Parameters=[@normalizedKey='?' (Size = 39)], CommandType='Text', CommandTimeout='30']&#xD;
+      SELECT "c"."Id", "c"."ApprovalId", "c"."ContractId", "c"."IdempotencyKey", "c"."SubmittedAt"&#xD;
+      FROM "ContractSubmissions" AS "c"&#xD;
+      WHERE "c"."IdempotencyKey" = @normalizedKey&#xD;
+      LIMIT 2&#xD;
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]&#xD;
+      Executed DbCommand (0ms) [Parameters=[@id='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']&#xD;
+      SELECT "c"."CustomerId", "c"."StartDate", "c"."EndDate", "c"."ServiceTerms", "c"."Status"&#xD;
+      FROM "Contracts" AS "c"&#xD;
+      WHERE "c"."Id" = @id&#xD;
+      LIMIT 2&#xD;
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]&#xD;
+      Executed DbCommand (0ms) [Parameters=[@createdContract_Id='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']&#xD;
+      SELECT COUNT(*)&#xD;
+      FROM "ContractSubmissions" AS "c"&#xD;
+      WHERE "c"."ContractId" = @createdContract_Id&#xD;
+info: Microsoft.Hosting.Lifetime[0]&#xD;
+      Application is shutting down...&#xD;
+[xUnit.net 00:00:02.21]   Finished:    QTKD.Api.Tests&#xD;
+</StdOut>
+    </Output>
+  </ResultSummary>
+</TestRun>

@@ -76,7 +76,7 @@ public sealed class ContractCommandService(
         UpdateContractRequest request,
         CancellationToken cancellationToken)
     {
-        if (request.Status is not null)
+        if (!ContractBusinessRules.CanSetStatusDirectly(request.Status))
         {
             return ApiOperationResult<ContractReadModel>.Failure(
                 StatusCodes.Status400BadRequest,
@@ -95,8 +95,7 @@ public sealed class ContractCommandService(
                 $"Contract {id} was not found.");
         }
 
-        if (existingContract.Status is not ContractStatuses.Draft
-            and not ContractStatuses.RevisionRequested)
+        if (!ContractBusinessRules.CanEdit(existingContract.Status))
         {
             return ApiOperationResult<ContractReadModel>.Failure(
                 StatusCodes.Status409Conflict,
@@ -229,7 +228,7 @@ public sealed class ContractCommandService(
                 $"Contract {id} was not found.");
         }
 
-        if (contract.Status != ContractStatuses.Draft)
+        if (!ContractBusinessRules.CanSubmit(contract.Status))
         {
             return ApiOperationResult<ContractSubmissionResponse>.Failure(
                 StatusCodes.Status409Conflict,
@@ -259,7 +258,7 @@ public sealed class ContractCommandService(
             .ExecuteUpdateAsync(
                 setters => setters.SetProperty(
                     item => item.Status,
-                    ContractStatuses.PendingApproval),
+                        ContractBusinessRules.GetStatusAfterSubmission()),
                 cancellationToken);
 
         if (updatedCount == 0)
@@ -305,29 +304,18 @@ public sealed class ContractCommandService(
         ContractSubmissionCandidate contract,
         CancellationToken cancellationToken)
     {
-        var failedConditions = new List<string>();
         var customerIsValid = await dbContext.Customers.AnyAsync(
             customer => customer.Id == contract.CustomerId
                 && customer.Status == "Active",
             cancellationToken);
-        if (!customerIsValid)
-        {
-            failedConditions.Add("Customer must exist and have Active status.");
-        }
 
         var today = DateOnly.FromDateTime(timeProvider.GetUtcNow().UtcDateTime);
-        if (contract.StartDate > contract.EndDate || contract.EndDate < today)
-        {
-            failedConditions.Add("Contract effective dates must be ordered and not expired.");
-        }
-
-        if (string.IsNullOrWhiteSpace((string?)contract.ServiceTerms))
-        {
-            failedConditions.Add(
-                "At least one required content item must be provided (demo assumption: ServiceTerms).");
-        }
-
-        return failedConditions;
+        return ContractBusinessRules.GetFailedSubmissionConditions(
+            customerIsValid,
+            contract.StartDate,
+            contract.EndDate,
+            today,
+            contract.ServiceTerms);
     }
 
     private Task<bool> IsActiveCustomerAsync(int customerId, CancellationToken cancellationToken) =>

@@ -4,7 +4,7 @@ using QTKD.Api.Infrastructure;
 
 namespace QTKD.Api.Tests
 {
-    [Trait("Category", "Unit")]
+    [Trait("Category", "Service")]
     public class CustomerServiceTests
     {
         private QtkdDbContext CreateInMemoryDbContext()
